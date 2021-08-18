@@ -13,7 +13,7 @@ function TopBar() {
 	return (
 		<AppBar
 			style={{ flexDirection: 'row', boxShadow: 'none' }}
-			position="static"
+			position="fixed"
 		>
 			<ShuLogo style={{ margin: 8, height: 32, width: 32 }} />
 			<Tabs value={value} onChange={handleChange}>
