@@ -98,7 +98,7 @@ function App() {
 			<CssBaseline />
 			<div style={{ backgroundColor: 'white', height: '100vh' }}>
 				<TopBar />
-				<div style={{ paddingTop: 48 }}>
+				<div style={{ marginTop: 48 }}>
 					<About />
 					<Work />
 					<Contact />

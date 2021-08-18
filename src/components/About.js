@@ -116,7 +116,7 @@ class About extends React.Component {
 
 const styles = theme => ({
 	mainContainer: {
-		width: 'inherit',
+		width: '100%',
 		backgroundColor: theme.palette.offWhite.main,
 	},
 	introCardContainer: {
