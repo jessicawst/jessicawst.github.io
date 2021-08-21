@@ -10,7 +10,7 @@ import Work from './components/Work';
 import Contact from './components/Contact';
 
 const proximaSoft = {
-	fontFamily: 'ProximaSoft',
+	fontFamily: 'ProximaSoft-Regular',
 	src: `
   local('ProximaSoft'),
   local('ProximaSoft-Regular'),
@@ -20,7 +20,7 @@ const proximaSoft = {
 };
 
 const proximaSoftBlack = {
-	fontFamily: 'ProximaSoft',
+	fontFamily: 'ProximaSoft-Black',
 	src: `
   local('ProximaSoft'),
   local('ProximaSoft-Black'),
@@ -30,7 +30,7 @@ const proximaSoftBlack = {
 };
 
 const proximaSoftBold = {
-	fontFamily: 'ProximaSoft',
+	fontFamily: 'ProximaSoft-Bold',
 	src: `
   local('ProximaSoft'),
   local('ProximaSoft-Bold'),
@@ -49,30 +49,29 @@ const theme = createTheme({
 			main: '#E57075',
 			contrastText: '#FFFFFF',
 		},
-		offWhite: {
-			main: '#F7F7F7',
-			contrastText: '#3D3334',
-		},
 		accent: {
 			main: '#FAF5B0',
 			contrastText: '#3D3334',
+		},
+		text: {
+			main: '#3D3334',
 		},
 		tonalOffset: 0,
 	},
 	typography: {
 		fontFamily: [
-			'ProximaSoft',
-			'-apple-system',
-			'BlinkMacSystemFont',
-			'"Segoe UI"',
-			'Roboto',
-			'"Helvetica Neue"',
-			'Arial',
-			'sans-serif',
-			'"Apple Color Emoji"',
-			'"Segoe UI Emoji"',
-			'"Segoe UI Symbol"',
+			'ProximaSoft-Regular',
+			'ProximaSoft-Black',
+			'ProximaSoft-Bold',
 		].join(','),
+		body1: {
+			fontFamily: 'ProximaSoft-Bold',
+			color: '#3D3334',
+		},
+		body2: {
+			fontFamily: 'ProximaSoft-Regular',
+			color: '#3D3334',
+		},
 	},
 	overrides: {
 		MuiCssBaseline: {
@@ -96,13 +95,11 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<div style={{ backgroundColor: 'white', height: '100vh' }}>
+			<div>
 				<TopBar />
-				<div style={{ marginTop: 48 }}>
-					<About />
-					<Work />
-					<Contact />
-				</div>
+				<About />
+				<Work />
+				<Contact />
 			</div>
 		</ThemeProvider>
 	);

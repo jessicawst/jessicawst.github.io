@@ -3,8 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import workList from '../data/workList';
-import workSlant from '../assets/workSlant.svg';
-import star from '../assets/star.svg';
+import { WorkSlant, Star, LatestWorkStar } from '../assets';
 
 class Work extends React.Component {
 	render() {
@@ -12,24 +11,20 @@ class Work extends React.Component {
 
 		return (
 			<div className={classes.mainContainer}>
-				<img className={classes.topSlant} src={workSlant} alt="" />
+				<WorkSlant className={classes.topSlant} />
 				<Grid
 					className={classes.workTitleContainer}
 					container
 					direction="column"
 					alignContent="center"
-					justifyContent="flex-end"
+					justifyContent="center"
 				>
-					<Typography style={{ lineHeight: 0.75 }} variant="h4">
+					<Typography style={{ fontSize: 36, lineHeight: 0.75 }}>
 						MY WORK
 					</Typography>
 					<Grid className={classes.titleAccent}>
 						<Typography style={{ lineHeight: 1 }}>awesome projects</Typography>
-						<img
-							style={{ transform: 'translate(128px, -64px)' }}
-							src={star}
-							alt=""
-						/>
+						<Star style={{ transform: 'translate(128px, -64px)' }} />
 					</Grid>
 				</Grid>
 				<div className={classes.workContainer}>
@@ -45,32 +40,20 @@ class Work extends React.Component {
 					>
 						{workList.map((item, index) => (
 							<Grid item lg={4} md={6} sm={12}>
-								<Typography className={classes.workListItem}>
-									{item.name}
+								<Grid className={classes.workListItem}>
 									{index === 0 ? (
-										<img
-											style={{
-												transform: 'translate(68px, -16px)',
-												height: 48,
-												width: 48,
-											}}
-											src={star}
-											alt=""
+										<LatestWorkStar
+											style={{ position: 'absolute', width: 48 }}
 										/>
 									) : (
 										''
 									)}
-								</Typography>
-								{/* <img
-								className={classes.workListItem}
-								src={item.image}
-								alt={item.name}
-							/> */}
+								</Grid>
 							</Grid>
 						))}
 					</Grid>
 				</div>
-				<img className={classes.bottomSlant} src={workSlant} alt="" />
+				<WorkSlant className={classes.bottomSlant} />
 			</div>
 		);
 	}
@@ -98,13 +81,12 @@ const styles = theme => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		padding: 40,
-		marginBottom: 1,
 	},
 	workGridContainer: {
 		width: 840,
 	},
 	workListItem: {
-		backgroundColor: theme.palette.primary.main,
+		backgroundColor: theme.palette.text.main,
 		width: 264,
 		height: 264,
 		borderRadius: 8,

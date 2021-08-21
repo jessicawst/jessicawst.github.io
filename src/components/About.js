@@ -4,8 +4,14 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import withMediaQuery from '../utils/withMediaQuery';
-import aboutCurve from '../assets/aboutCurve.svg';
-import zigZag from '../assets/zigZag.svg';
+import {
+	AboutCurve,
+	ZigZag,
+	HeartWithDashes,
+	Logo,
+	SelfPortrait,
+	ResumePhoto,
+} from '../assets';
 
 class About extends React.Component {
 	render() {
@@ -24,8 +30,29 @@ class About extends React.Component {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<Typography>I'm Shuting</Typography>
-						<Typography>UI/UX + Graphic Designer</Typography>
+						<HeartWithDashes style={{ width: '60vw' }} />
+						<Grid style={{ position: 'absolute', zIndex: 1 }}>
+							<Typography
+								style={{
+									display: 'flex',
+									alignItems: 'center',
+									marginLeft: 10,
+									marginBottom: 12,
+									fontSize: 48,
+								}}
+							>
+								I'm <Logo style={{ margin: '0px 16px' }} /> -
+							</Typography>
+							<Typography
+								style={{
+									backgroundColor: '#FAF5B0',
+									padding: '8px 28px',
+									fontSize: 26,
+								}}
+							>
+								UI/UX + Graphic Designer
+							</Typography>
+						</Grid>
 					</Grid>
 					<Grid
 						className={classes.selfPortraitContainer}
@@ -36,17 +63,12 @@ class About extends React.Component {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<Grid
-							className={classes.selfPortraitCircle}
-							container
-							justifyContent="center"
-							alignItems="center"
-						>
-							<Typography>Shu Ting Picture</Typography>
-						</Grid>
+						<SelfPortrait
+							style={{ width: '80%', marginBottom: -64, zIndex: 2 }}
+						/>
 					</Grid>
 					<Grid item lg={12} md={12}>
-						<img className={classes.aboutCurve} src={aboutCurve} alt="" />
+						<AboutCurve className={classes.aboutCurve} />
 					</Grid>
 					{isDesktop ? (
 						<Grid
@@ -57,9 +79,7 @@ class About extends React.Component {
 							justifyContent="center"
 							alignItems="center"
 						>
-							<Grid className={classes.redBox}>
-								<Grid className={classes.redBoxPhoto}></Grid>
-							</Grid>
+							<ResumePhoto style={{ width: '100%' }} />
 						</Grid>
 					) : (
 						''
@@ -73,29 +93,50 @@ class About extends React.Component {
 						direction="column"
 						justifyContent="center"
 					>
-						<Grid container alignItems="flex-end">
+						<Grid style={{ marginBottom: 16 }} container alignItems="flex-end">
 							<Grid
 								className={classes.helloFlavor}
 								container
 								alignContent="flex-end"
 								justifyContent="flex-start"
 							>
-								<Typography>HELLO!</Typography>
+								<Typography style={{ fontSize: 45, lineHeight: 0.8 }}>
+									HELLO!
+								</Typography>
 							</Grid>
-							<img src={zigZag} alt="" />
+							<ZigZag />
 						</Grid>
-						<Grid>
-							<Typography>
+						<Grid style={{ paddingRight: 48 }}>
+							<Typography
+								style={{ fontSize: 13, marginBottom: 8 }}
+								variant="body2"
+							>
 								I am an UX/UI + Graphic Designer. Possessing the ability to lead
 								and the willingness to be led, I am a team player who can also
 								work well individually.
-								<br />I am an individual driven to accomplish, to the best of my
+							</Typography>
+							<Typography
+								style={{ fontSize: 13, marginBottom: 8 }}
+								variant="body2"
+							>
+								I am an individual driven to accomplish, to the best of my
 								ability, the tasks given to me. Beyond my personal tasks, I
 								would assist my peers and colleagues whenever I can. As someone
 								who is adventurous and loves to be challenged, I believe that
 								passion and hard work is the key to success.
-								<br />A designer that seeks to satisfy your needs and translate
-								your wildest dreams into reality.
+							</Typography>
+							<Typography
+								style={{ fontSize: 13, marginBottom: 8 }}
+								variant="body2"
+							>
+								A designer that seeks to satisfy your needs and translate your
+								wildest dreams into reality.
+							</Typography>
+							<Typography
+								style={{ fontSize: 18, marginBottom: 8 }}
+								variant="body2"
+							>
+								If you can dream it, I can design it!
 							</Typography>
 						</Grid>
 						<Grid>
@@ -104,7 +145,11 @@ class About extends React.Component {
 								variant="contained"
 								color="secondary"
 							>
-								<Typography>Download Resume</Typography>
+								<Typography
+									style={{ color: 'white', textTransform: 'capitalize' }}
+								>
+									Download Resume
+								</Typography>
 							</Button>
 						</Grid>
 					</Grid>
@@ -117,7 +162,7 @@ class About extends React.Component {
 const styles = theme => ({
 	mainContainer: {
 		width: '100%',
-		backgroundColor: theme.palette.offWhite.main,
+		marginTop: 48,
 	},
 	introCardContainer: {
 		backgroundColor: theme.palette.primary.main,
@@ -138,22 +183,8 @@ const styles = theme => ({
 		width: '100%',
 	},
 	redBoxContainer: {
-		paddingTop: 16,
-		paddingBottom: 16,
-	},
-	redBox: {
-		backgroundColor: theme.palette.secondary.main,
-		width: 376,
-		height: 460,
-		transform: 'rotate(10deg)',
-	},
-	redBoxPhoto: {
-		backgroundColor: 'black',
-		left: 16,
-		up: 16,
-		width: 376,
-		height: 460,
-		transform: 'rotate(-10deg) translate(-40px, -16px)',
+		padding: '0px 80px',
+		marginBottom: -32,
 	},
 	resumeContainer: {
 		paddingRight: 100,
@@ -162,9 +193,10 @@ const styles = theme => ({
 		width: 165,
 		height: 6,
 		backgroundColor: theme.palette.accent.main,
+		marginRight: 16,
 	},
 	resumeButton: {
-		backgroundColor: '#3D3334',
+		backgroundColor: theme.palette.text.main,
 		boxShadow: 'none',
 		borderRadius: 0,
 	},
