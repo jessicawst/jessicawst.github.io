@@ -37,8 +37,8 @@ class About extends React.Component {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<HeartWithDashes style={{ width: '60vw' }} />
-						<Grid style={{ position: 'absolute', zIndex: 1 }}>
+						<HeartWithDashes style={{ width: '60vw', zIndex: 1 }} />
+						<Grid style={{ position: 'absolute', zIndex: 2 }}>
 							<Typography
 								style={{
 									display: 'flex',
