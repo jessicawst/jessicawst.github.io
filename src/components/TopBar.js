@@ -1,8 +1,36 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { ShuLogo } from '../assets';
+import { Typography } from '@material-ui/core';
+
+const tabIndicatorWidths = [96, 96, 100];
+
+const StyledTabs = withStyles(theme => ({
+	flexContainer: {
+		height: '100%',
+	},
+	indicator: {
+		display: 'flex',
+		justifyContent: 'center',
+		backgroundColor: 'transparent',
+		height: 4,
+		bottom: 32,
+		'& > span': {
+			maxWidth: 100,
+			width: '100%',
+			backgroundColor: theme.palette.secondary.main,
+		},
+	},
+}))(props => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
+
+const tabLabel = label => (
+	<Typography style={{ fontSize: 20, height: '100%', margin: '0px 40px' }}>
+		{label}
+	</Typography>
+);
 
 function TopBar() {
 	const [value, setValue] = React.useState(0);
@@ -12,15 +40,19 @@ function TopBar() {
 	};
 	return (
 		<AppBar
-			style={{ flexDirection: 'row', boxShadow: 'none' }}
+			style={{ flexDirection: 'row', boxShadow: 'none', height: 96 }}
 			position="fixed"
 		>
-			<ShuLogo style={{ margin: 8, height: 32, width: 32 }} />
-			<Tabs value={value} onChange={handleChange}>
-				<Tab label="About Me" />
-				<Tab label="My Work" />
-				<Tab label="Contact Me" />
-			</Tabs>
+			<ShuLogo style={{ margin: 16, width: 64 }} />
+			<StyledTabs
+				style={{ height: '100%', marginLeft: 32 }}
+				value={value}
+				onChange={handleChange}
+			>
+				<Tab label={tabLabel('ABOUT ME')} />
+				<Tab label={tabLabel('MY WORK')} />
+				<Tab label={tabLabel('CONTACT ME')} />
+			</StyledTabs>
 		</AppBar>
 	);
 }

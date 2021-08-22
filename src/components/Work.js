@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import workList from '../data/workList';
-import { WorkSlant, Star, LatestWorkStar } from '../assets';
+import { WorkSlant, Star, LatestWorkStar, ComingSoonStar } from '../assets';
 
 class Work extends React.Component {
 	render() {
@@ -35,15 +35,33 @@ class Work extends React.Component {
 						md={12}
 						sm={12}
 						spacing={2}
-						justifyContent="center"
 						alignItems="center"
 					>
 						{workList.map((item, index) => (
 							<Grid item lg={4} md={6} sm={12}>
 								<Grid className={classes.workListItem}>
-									{index === 0 ? (
+									{item.logo({ style: { width: '100%', borderRadius: 8 } }) ||
+										''}
+									{item.isLatest ? (
 										<LatestWorkStar
-											style={{ position: 'absolute', width: 48 }}
+											style={{
+												position: 'absolute',
+												width: 64,
+												alignSelf: 'flex-start',
+												transform: 'translate(112px, -32px)',
+											}}
+										/>
+									) : (
+										''
+									)}
+									{item.isComingSoon ? (
+										<ComingSoonStar
+											style={{
+												position: 'absolute',
+												width: 64,
+												alignSelf: 'flex-start',
+												transform: 'translate(112px, -32px)',
+											}}
 										/>
 									) : (
 										''
@@ -86,11 +104,13 @@ const styles = theme => ({
 		width: 840,
 	},
 	workListItem: {
-		backgroundColor: theme.palette.text.main,
+		backgroundColor: 'inherit',
 		width: 264,
 		height: 264,
 		borderRadius: 8,
-		textAlign: 'center',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	bottomSlant: {
 		width: '100%',

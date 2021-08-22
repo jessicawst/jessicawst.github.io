@@ -8,6 +8,7 @@ import resumePhoto from './resumePhoto.png';
 import workSlant from './workSlant.svg';
 import star from './star.svg';
 import latestWorkStar from './latestWorkStar.png';
+import comingSoonStar from './comingSoonStar.png';
 import contactPhotos from './contactPhotos.png';
 import randomShapes from './randomShapes.svg';
 import fbStar from './fbStar.png';
@@ -79,6 +80,15 @@ const LatestWorkStar = props => (
 	/>
 );
 
+const ComingSoonStar = props => (
+	<img
+		className={props.className}
+		style={props.style}
+		src={comingSoonStar}
+		alt=""
+	/>
+);
+
 const ContactPhotos = props => (
 	<img
 		className={props.className}
@@ -125,6 +135,7 @@ export {
 	WorkSlant,
 	Star,
 	LatestWorkStar,
+	ComingSoonStar,
 	ContactPhotos,
 	RandomShapes,
 	FBStar,

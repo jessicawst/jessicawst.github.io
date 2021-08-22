@@ -14,6 +14,13 @@ import {
 } from '../assets';
 
 class About extends React.Component {
+	downloadResume() {
+		const link = document.createElement('a');
+		link.download = `Shuting_Resume.pdf`;
+		link.href = 'resume/Shuting_Resume.pdf';
+		link.click();
+	}
+
 	render() {
 		const { classes, isDesktop } = this.props;
 
@@ -144,6 +151,7 @@ class About extends React.Component {
 								className={classes.resumeButton}
 								variant="contained"
 								color="secondary"
+								onClick={this.downloadResume}
 							>
 								<Typography
 									style={{ color: 'white', textTransform: 'capitalize' }}
@@ -162,7 +170,7 @@ class About extends React.Component {
 const styles = theme => ({
 	mainContainer: {
 		width: '100%',
-		marginTop: 48,
+		marginTop: 96,
 	},
 	introCardContainer: {
 		backgroundColor: theme.palette.primary.main,
@@ -199,6 +207,7 @@ const styles = theme => ({
 		backgroundColor: theme.palette.text.main,
 		boxShadow: 'none',
 		borderRadius: 0,
+		marginTop: 16,
 	},
 });
 
