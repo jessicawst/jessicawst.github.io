@@ -12,4 +12,26 @@ const withMediaQuery =
 		return <Component {...mediaProps} {...props} />;
 	};
 
-export default withMediaQuery;
+export default withMediaQuery([
+	[
+		'isMobile',
+		theme => theme.breakpoints.down('sm'),
+		{
+			defaultMatches: true,
+		},
+	],
+	[
+		'isTablet',
+		theme => theme.breakpoints.between('md', 'lg'),
+		{
+			defaultMatches: true,
+		},
+	],
+	[
+		'isDesktop',
+		theme => theme.breakpoints.up('lg'),
+		{
+			defaultMatches: true,
+		},
+	],
+]);

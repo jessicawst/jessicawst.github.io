@@ -22,45 +22,34 @@ class About extends React.Component {
 	}
 
 	render() {
-		const { classes, isDesktop } = this.props;
+		const { classes, isDesktop, isTablet, isMobile } = this.props;
 
 		return (
 			<div className={classes.mainContainer}>
 				<Grid container lg={12} md={12}>
-					<Grid
-						className={classes.introCardContainer}
-						container
-						item
-						lg={6}
-						md={12}
-						direction="column"
-						justifyContent="center"
-						alignItems="center"
-					>
-						<HeartWithDashes style={{ width: '60vw', zIndex: 1 }} />
-						<Grid style={{ position: 'absolute', zIndex: 2 }}>
-							<Typography
-								style={{
-									display: 'flex',
-									alignItems: 'center',
-									marginLeft: 10,
-									marginBottom: 12,
-									fontSize: 48,
-								}}
-							>
-								I'm <Logo style={{ margin: '0px 16px' }} /> -
-							</Typography>
-							<Typography
-								style={{
-									backgroundColor: '#FAF5B0',
-									padding: '8px 28px',
-									fontSize: 26,
-								}}
-							>
-								UI/UX + Graphic Designer
-							</Typography>
+					{isDesktop ? (
+						<Grid
+							className={classes.introCardContainer}
+							container
+							item
+							lg={6}
+							direction="column"
+							justifyContent="center"
+							alignItems="center"
+						>
+							<HeartWithDashes className={classes.introCardHeart} />
+							<Grid className={classes.introCardTextContainer}>
+								<Typography className={classes.introCardTopText}>
+									I'm <Logo className={classes.introCardLogo} /> -
+								</Typography>
+								<Typography className={classes.introCardBottomText}>
+									UI/UX + Graphic Designer
+								</Typography>
+							</Grid>
 						</Grid>
-					</Grid>
+					) : (
+						''
+					)}
 					<Grid
 						className={classes.selfPortraitContainer}
 						container
@@ -70,23 +59,45 @@ class About extends React.Component {
 						justifyContent="center"
 						alignItems="center"
 					>
-						<SelfPortrait
-							style={{ width: '80%', marginBottom: -64, zIndex: 2 }}
-						/>
+						<SelfPortrait className={classes.selfPortrait} />
 					</Grid>
 					<Grid item lg={12} md={12}>
 						<AboutCurve className={classes.aboutCurve} />
 					</Grid>
+
 					{isDesktop ? (
 						<Grid
-							className={classes.redBoxContainer}
+							className={classes.resumePhotoContainer}
 							container
 							item
 							lg={6}
 							justifyContent="center"
 							alignItems="center"
 						>
-							<ResumePhoto style={{ width: '100%' }} />
+							<ResumePhoto className={classes.resumePhoto} />
+						</Grid>
+					) : (
+						''
+					)}
+					{!isDesktop ? (
+						<Grid
+							className={classes.introCardContainer}
+							container
+							item
+							lg={6}
+							md={12}
+							direction="column"
+							justifyContent="center"
+							alignItems="center"
+						>
+							<Grid className={classes.introCardTextContainer}>
+								<Typography className={classes.introCardTopText}>
+									I'm <Logo className={classes.introCardLogo} /> -
+								</Typography>
+								<Typography className={classes.introCardBottomText}>
+									UI/UX + Graphic Designer
+								</Typography>
+							</Grid>
 						</Grid>
 					) : (
 						''
@@ -100,62 +111,54 @@ class About extends React.Component {
 						direction="column"
 						justifyContent="center"
 					>
-						<Grid style={{ marginBottom: 16 }} container alignItems="flex-end">
+						<Grid
+							className={classes.helloContainer}
+							container
+							alignItems="flex-end"
+							justifyContent={!isDesktop ? 'center' : 'flex-start'}
+						>
 							<Grid
 								className={classes.helloFlavor}
 								container
 								alignContent="flex-end"
 								justifyContent="flex-start"
 							>
-								<Typography style={{ fontSize: 45, lineHeight: 0.8 }}>
-									HELLO!
-								</Typography>
+								<Typography className={classes.helloText}>HELLO!</Typography>
 							</Grid>
-							<ZigZag />
+							<ZigZag className={classes.helloZigZag} />
 						</Grid>
-						<Grid style={{ paddingRight: 48 }}>
-							<Typography
-								style={{ fontSize: 13, marginBottom: 8 }}
-								variant="body2"
-							>
+						<Grid className={classes.resumeTextContainer}>
+							<Typography className={classes.resumeText} variant="body2">
 								I am an UX/UI + Graphic Designer. Possessing the ability to lead
 								and the willingness to be led, I am a team player who can also
 								work well individually.
 							</Typography>
-							<Typography
-								style={{ fontSize: 13, marginBottom: 8 }}
-								variant="body2"
-							>
+							<Typography className={classes.resumeText} variant="body2">
 								I am an individual driven to accomplish, to the best of my
 								ability, the tasks given to me. Beyond my personal tasks, I
 								would assist my peers and colleagues whenever I can. As someone
 								who is adventurous and loves to be challenged, I believe that
 								passion and hard work is the key to success.
 							</Typography>
-							<Typography
-								style={{ fontSize: 13, marginBottom: 8 }}
-								variant="body2"
-							>
+							<Typography className={classes.resumeText} variant="body2">
 								A designer that seeks to satisfy your needs and translate your
 								wildest dreams into reality.
 							</Typography>
 							<Typography
-								style={{ fontSize: 18, marginBottom: 8 }}
+								className={classes.resumeEmphasisText}
 								variant="body2"
 							>
 								If you can dream it, I can design it!
 							</Typography>
 						</Grid>
-						<Grid>
+						<Grid className={classes.resumeButtonContainer}>
 							<Button
 								className={classes.resumeButton}
 								variant="contained"
 								color="secondary"
 								onClick={this.downloadResume}
 							>
-								<Typography
-									style={{ color: 'white', textTransform: 'capitalize' }}
-								>
+								<Typography className={classes.resumeButtonText}>
 									Download Resume
 								</Typography>
 							</Button>
@@ -173,29 +176,74 @@ const styles = theme => ({
 		marginTop: 96,
 	},
 	introCardContainer: {
-		backgroundColor: theme.palette.primary.main,
+		[theme.breakpoints.up('lg')]: {
+			backgroundColor: theme.palette.primary.main,
+		},
+	},
+	introCardHeart: {
+		width: '60vw',
+		zIndex: 1,
+	},
+	introCardTextContainer: {
+		zIndex: 2,
+		[theme.breakpoints.up('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			marginBottom: 80,
+		},
+		[theme.breakpoints.up('lg')]: {
+			position: 'absolute',
+		},
+	},
+	introCardTopText: {
+		display: 'flex',
+		alignItems: 'center',
+		marginLeft: 10,
+		marginBottom: 12,
+		[theme.breakpoints.up('md')]: {
+			fontSize: 56,
+		},
+		[theme.breakpoints.up('lg')]: {
+			fontSize: 48,
+		},
+	},
+	introCardLogo: {
+		margin: '0px 16px',
+	},
+	introCardBottomText: {
+		backgroundColor: '#FAF5B0',
+		padding: '8px 28px',
+		fontSize: 26,
 	},
 	selfPortraitContainer: {
 		backgroundColor: theme.palette.primary.main,
 	},
-	selfPortraitCircle: {
-		marginTop: 16,
-		marginBottom: -16,
-		width: 450,
-		height: 450,
-		backgroundColor: '#FABABB',
-		borderRadius: '50%',
-		zIndex: 1,
+	selfPortrait: {
+		width: '80%',
+		marginBottom: -64,
+		zIndex: 2,
+		[theme.breakpoints.up('md')]: {
+			width: '60%',
+		},
 	},
 	aboutCurve: {
 		width: '100%',
 	},
-	redBoxContainer: {
+	resumePhotoContainer: {
 		padding: '0px 80px',
 		marginBottom: -32,
 	},
+	resumePhoto: {
+		width: '100%',
+	},
 	resumeContainer: {
-		paddingRight: 100,
+		[theme.breakpoints.up('lg')]: {
+			paddingRight: 100,
+		},
+	},
+	helloContainer: {
+		marginBottom: 16,
 	},
 	helloFlavor: {
 		width: 165,
@@ -203,22 +251,61 @@ const styles = theme => ({
 		backgroundColor: theme.palette.accent.main,
 		marginRight: 16,
 	},
+	helloText: {
+		fontSize: 45,
+		lineHeight: 0.8,
+	},
+	helloZigZag: {},
+	resumeTextContainer: {
+		paddingRight: 56,
+		[theme.breakpoints.down('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			textAlign: 'center',
+			padding: '0px 240px',
+		},
+	},
+	resumeText: {
+		marginBottom: 8,
+		[theme.breakpoints.up('md')]: {
+			fontSize: 18,
+		},
+		[theme.breakpoints.up('lg')]: {
+			fontSize: 14,
+		},
+	},
+	resumeEmphasisText: {
+		[theme.breakpoints.up('md')]: {
+			fontSize: 24,
+		},
+		[theme.breakpoints.up('lg')]: {
+			fontSize: 18,
+		},
+	},
+	resumeButtonContainer: {
+		[theme.breakpoints.down('md')]: {
+			display: 'flex',
+			justifyContent: 'center',
+		},
+	},
 	resumeButton: {
 		backgroundColor: theme.palette.text.main,
 		boxShadow: 'none',
 		borderRadius: 0,
 		marginTop: 16,
+		[theme.breakpoints.down('md')]: {
+			height: 56,
+			width: 214,
+		},
+	},
+	resumeButtonText: {
+		color: 'white',
+		textTransform: 'capitalize',
+		[theme.breakpoints.down('md')]: {
+			fontSize: 20,
+		},
 	},
 });
 
-export default withStyles(styles)(
-	withMediaQuery([
-		[
-			'isDesktop',
-			theme => theme.breakpoints.up('lg'),
-			{
-				defaultMatches: true,
-			},
-		],
-	])(About)
-);
+export default withStyles(styles)(withMediaQuery(About));

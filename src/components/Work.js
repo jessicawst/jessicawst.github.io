@@ -4,10 +4,11 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import workList from '../data/workList';
 import { WorkSlant, Star, LatestWorkStar, ComingSoonStar } from '../assets';
+import withMediaQuery from '../utils/withMediaQuery';
 
 class Work extends React.Component {
 	render() {
-		const { classes } = this.props;
+		const { classes, isDesktop, isTablet, isMobile } = this.props;
 
 		return (
 			<div className={classes.mainContainer}>
@@ -19,12 +20,12 @@ class Work extends React.Component {
 					alignContent="center"
 					justifyContent="center"
 				>
-					<Typography style={{ fontSize: 36, lineHeight: 0.75 }}>
-						MY WORK
-					</Typography>
+					<Typography className={classes.workTitleText}>MY WORK</Typography>
 					<Grid className={classes.titleAccent}>
-						<Typography style={{ lineHeight: 1 }}>awesome projects</Typography>
-						<Star style={{ transform: 'translate(128px, -64px)' }} />
+						<Typography className={classes.titleAccentText}>
+							awesome projects
+						</Typography>
+						<Star className={classes.star} />
 					</Grid>
 				</Grid>
 				<div className={classes.workContainer}>
@@ -40,29 +41,14 @@ class Work extends React.Component {
 						{workList.map((item, index) => (
 							<Grid item lg={4} md={6} sm={12}>
 								<Grid className={classes.workListItem}>
-									{item.logo({ style: { width: '100%', borderRadius: 8 } }) ||
-										''}
+									{item.logo({ className: classes.workListItemLogo }) || ''}
 									{item.isLatest ? (
-										<LatestWorkStar
-											style={{
-												position: 'absolute',
-												width: 64,
-												alignSelf: 'flex-start',
-												transform: 'translate(112px, -32px)',
-											}}
-										/>
+										<LatestWorkStar className={classes.workListItemStar} />
 									) : (
 										''
 									)}
 									{item.isComingSoon ? (
-										<ComingSoonStar
-											style={{
-												position: 'absolute',
-												width: 64,
-												alignSelf: 'flex-start',
-												transform: 'translate(112px, -32px)',
-											}}
-										/>
+										<ComingSoonStar className={classes.workListItemStar} />
 									) : (
 										''
 									)}
@@ -88,10 +74,34 @@ const styles = theme => ({
 		height: 80,
 		marginTop: -85,
 	},
+	workTitleText: {
+		[theme.breakpoints.up('md')]: {
+			fontSize: 44,
+		},
+		[theme.breakpoints.up('lg')]: {
+			fontSize: 36,
+		},
+		lineHeight: 0.75,
+	},
 	titleAccent: {
 		backgroundColor: theme.palette.accent.main,
 		height: 10,
 		marginLeft: 32,
+		[theme.breakpoints.down('md')]: {
+			marginLeft: 40,
+		},
+	},
+	titleAccentText: {
+		lineHeight: 1,
+		[theme.breakpoints.down('md')]: {
+			fontSize: 20,
+		},
+	},
+	star: {
+		transform: 'translate(128px, -64px)',
+		[theme.breakpoints.down('md')]: {
+			transform: 'translate(164px, -72px)',
+		},
 	},
 	workContainer: {
 		backgroundColor: theme.palette.secondary.main + '1A',
@@ -101,7 +111,15 @@ const styles = theme => ({
 		padding: 40,
 	},
 	workGridContainer: {
-		width: 840,
+		[theme.breakpoints.down('sm')]: {
+			width: 280,
+		},
+		[theme.breakpoints.up('md')]: {
+			width: 560,
+		},
+		[theme.breakpoints.up('lg')]: {
+			width: 840,
+		},
 	},
 	workListItem: {
 		backgroundColor: 'inherit',
@@ -112,10 +130,20 @@ const styles = theme => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+	workListItemLogo: {
+		width: '100%',
+		borderRadius: 8,
+	},
+	workListItemStar: {
+		position: 'absolute',
+		width: 64,
+		alignSelf: 'flex-start',
+		transform: 'translate(112px, -32px)',
+	},
 	bottomSlant: {
 		width: '100%',
 		transform: 'rotate(180deg)',
 	},
 });
 
-export default withStyles(styles)(Work);
+export default withStyles(styles)(withMediaQuery(Work));

@@ -4,12 +4,13 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import ProximaSoftBlack from './fonts/ProximaSoft-Black.woff2';
 import ProximaSoftBold from './fonts/ProximaSoft-Bold.woff2';
 import ProximaSoftRegular from './fonts/ProximaSoft-Regular.woff2';
+import ProximaSoftMedium from './fonts/ProximaSoft-Medium.woff2';
 import TopBar from './components/TopBar';
 import About from './components/About';
 import Work from './components/Work';
 import Contact from './components/Contact';
 
-const proximaSoft = {
+const proximaSoftRegular = {
 	fontFamily: 'ProximaSoft-Regular',
 	src: `
   local('ProximaSoft'),
@@ -35,6 +36,16 @@ const proximaSoftBold = {
   local('ProximaSoft'),
   local('ProximaSoft-Bold'),
   url(${ProximaSoftBold}) format('woff2')`,
+	unicodeRange:
+		'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF',
+};
+
+const proximaSoftMedium = {
+	fontFamily: 'ProximaSoft-Medium',
+	src: `
+  local('ProximaSoft'),
+  local('ProximaSoft-Medium'),
+  url(${ProximaSoftMedium}) format('woff2')`,
 	unicodeRange:
 		'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF',
 };
@@ -69,14 +80,19 @@ const theme = createTheme({
 			color: '#3D3334',
 		},
 		body2: {
-			fontFamily: 'ProximaSoft-Regular',
+			fontFamily: 'ProximaSoft-Medium',
 			color: '#3D3334',
 		},
 	},
 	overrides: {
 		MuiCssBaseline: {
 			'@global': {
-				'@font-face': [proximaSoft, proximaSoftBlack, proximaSoftBold],
+				'@font-face': [
+					proximaSoftRegular,
+					proximaSoftBlack,
+					proximaSoftBold,
+					proximaSoftMedium,
+				],
 			},
 		},
 	},

@@ -24,15 +24,8 @@ class Contact extends React.Component {
 					sm={12}
 				>
 					<Grid className={classes.photoContainer} item lg={6} md={12} sm={12}>
-						<RandomShapes
-							style={{
-								position: 'absolute',
-								width: 240,
-								transform: 'rotate(180deg) translate(48px, 48px)',
-								opacity: 0.1,
-							}}
-						/>
-						<ContactPhotos style={{ width: '100%' }} />
+						<RandomShapes className={classes.topShapes} />
+						<ContactPhotos className={classes.contactPhotos} />
 					</Grid>
 					<Grid
 						className={classes.contactTextContainer}
@@ -41,7 +34,7 @@ class Contact extends React.Component {
 						md={12}
 						sm={12}
 					>
-						<Grid>
+						<Grid className={classes.contactInfoContainer}>
 							<Typography className={classes.contactTitle}>
 								CONTACT ME!
 							</Typography>
@@ -57,7 +50,7 @@ class Contact extends React.Component {
 							<Typography className={classes.contactContent} variant="body2">
 								Email Address
 								<a
-									style={{ color: 'white' }}
+									className={classes.contactLinkContainer}
 									href="mailto:jessicawst@outlook.com"
 								>
 									<Typography className={classes.contactLinks} variant="body2">
@@ -67,16 +60,19 @@ class Contact extends React.Component {
 							</Typography>
 							<Typography className={classes.contactContent} variant="body2">
 								Phone Number
-								<a style={{ color: 'white' }} href="tel:+6591879338">
+								<a
+									className={classes.contactLinkContainer}
+									href="mailto:jessicawst@outlook.com"
+								>
 									<Typography className={classes.contactLinks} variant="body2">
-										+65 9187 9338
+										9187 9338
 									</Typography>
 								</a>
 							</Typography>
 							<Typography className={classes.contactContent} variant="body2">
 								On Web
 								<a
-									style={{ color: 'white' }}
+									className={classes.contactLinkContainer}
 									href="http://jessicawst.com/pfolio/"
 								>
 									<Typography className={classes.contactLinks} variant="body2">
@@ -103,15 +99,7 @@ class Contact extends React.Component {
 								</a>
 							</Grid>
 						</Typography>
-						<RandomShapes
-							style={{
-								position: 'absolute',
-								width: 320,
-								alignSelf: 'flex-end',
-								transform: 'translate(80px, 320px)',
-								opacity: 0.1,
-							}}
-						/>
+						<RandomShapes className={classes.bottomShapes} />
 					</Grid>
 				</Grid>
 			</div>
@@ -122,6 +110,7 @@ class Contact extends React.Component {
 const styles = theme => ({
 	mainContainer: {
 		width: '100%',
+		height: 'fit-content',
 		padding: 40,
 	},
 	contactContainer: {
@@ -129,12 +118,52 @@ const styles = theme => ({
 	},
 	photoContainer: {
 		padding: 40,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	topShapes: {
+		position: 'absolute',
+		width: 240,
+		left: '40px',
+		opacity: 0.1,
+		[theme.breakpoints.down('sm')]: {
+			transform: 'rotate(180deg) translate(0px, 160px)',
+		},
+		[theme.breakpoints.up('md')]: {
+			transform: 'rotate(180deg) translate(0px, 200px)',
+		},
+		[theme.breakpoints.up('lg')]: {
+			transform: 'rotate(180deg) translate(0px, 160px)',
+		},
+	},
+	contactPhotos: {
+		[theme.breakpoints.down('sm')]: {
+			width: '90%',
+		},
+		[theme.breakpoints.up('md')]: {
+			width: '80%',
+		},
+		[theme.breakpoints.up('lg')]: {
+			width: '100%',
+		},
 	},
 	contactTextContainer: {
 		padding: '40px 80px',
 		display: 'flex',
 		justifyContent: 'space-between',
 		flexDirection: 'column',
+		[theme.breakpoints.down('md')]: {
+			alignItems: 'center',
+		},
+	},
+	contactInfoContainer: {
+		[theme.breakpoints.down('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			width: 440,
+		},
 	},
 	contactTitle: {
 		color: 'white',
@@ -148,6 +177,12 @@ const styles = theme => ({
 		fontSize: 16,
 		marginTop: 16,
 		lineHeight: 1,
+		[theme.breakpoints.down('md')]: {
+			textAlign: 'center',
+		},
+	},
+	contactLinkContainer: {
+		color: 'white',
 	},
 	contactLinks: {
 		color: 'white',
@@ -155,8 +190,17 @@ const styles = theme => ({
 	},
 	contactIcons: {
 		width: 40,
-		marginTop: 8,
-		marginRight: 32,
+		margin: '16px 32px 0px 0px',
+		[theme.breakpoints.down('md')]: {
+			margin: 16,
+		},
+	},
+	bottomShapes: {
+		position: 'absolute',
+		width: 320,
+		alignSelf: 'flex-end',
+		transform: 'translate(80px, 320px)',
+		opacity: 0.1,
 	},
 });
 

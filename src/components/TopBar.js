@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { ShuLogo } from '../assets';
 import { Typography } from '@material-ui/core';
+import withMediaQuery from '../utils/withMediaQuery';
 
 const tabIndicatorWidths = [96, 96, 100];
 
@@ -27,12 +28,13 @@ const StyledTabs = withStyles(theme => ({
 }))(props => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
 const tabLabel = label => (
-	<Typography style={{ fontSize: 20, height: '100%', margin: '0px 40px' }}>
+	<Typography style={{ fontSize: 20, height: '100%', margin: '0px 20px' }}>
 		{label}
 	</Typography>
 );
 
-function TopBar() {
+function TopBar(props) {
+	const { isDesktop } = props;
 	const [value, setValue] = React.useState(0);
 
 	const handleChange = (event, newValue) => {
@@ -45,9 +47,10 @@ function TopBar() {
 		>
 			<ShuLogo style={{ margin: 16, width: 64 }} />
 			<StyledTabs
-				style={{ height: '100%', marginLeft: 32 }}
+				style={{ height: '100%', width: '100%' }}
 				value={value}
 				onChange={handleChange}
+				variant={isDesktop ? 'standard' : 'fullWidth'}
 			>
 				<Tab label={tabLabel('ABOUT ME')} />
 				<Tab label={tabLabel('MY WORK')} />
@@ -57,4 +60,4 @@ function TopBar() {
 	);
 }
 
-export default TopBar;
+export default withMediaQuery(TopBar);
