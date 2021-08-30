@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import { Element } from 'react-scroll';
 import withMediaQuery from '../utils/withMediaQuery';
 import {
 	AboutCurve,
@@ -25,147 +26,151 @@ class About extends React.Component {
 		const { classes, isDesktop, isTablet, isMobile } = this.props;
 
 		return (
-			<div className={classes.mainContainer}>
-				<Grid container lg={12} md={12}>
-					{isDesktop ? (
-						<Grid
-							className={classes.introCardContainer}
-							container
-							item
-							lg={6}
-							direction="column"
-							justifyContent="center"
-							alignItems="center"
-						>
-							<HeartWithDashes className={classes.introCardHeart} />
-							<Grid className={classes.introCardTextContainer}>
-								<Typography className={classes.introCardTopText}>
-									I'm <Logo className={classes.introCardLogo} /> -
-								</Typography>
-								<Typography className={classes.introCardBottomText}>
-									UI/UX + Graphic Designer
-								</Typography>
+			<Element id="aboutLink">
+				<div className={classes.mainContainer}>
+					<Grid container lg={12} md={12}>
+						{isDesktop ? (
+							<Grid
+								className={classes.introCardContainer}
+								container
+								item
+								lg={6}
+								direction="column"
+								justifyContent="center"
+								alignItems="center"
+							>
+								<HeartWithDashes className={classes.introCardHeart} />
+								<Grid className={classes.introCardTextContainer}>
+									<Typography className={classes.introCardTopText}>
+										I'm <Logo className={classes.introCardLogo} /> -
+									</Typography>
+									<Typography className={classes.introCardBottomText}>
+										UI/UX + Graphic Designer
+									</Typography>
+								</Grid>
 							</Grid>
-						</Grid>
-					) : (
-						''
-					)}
-					<Grid
-						className={classes.selfPortraitContainer}
-						container
-						item
-						lg={6}
-						md={12}
-						justifyContent="center"
-						alignItems="center"
-					>
-						<SelfPortrait className={classes.selfPortrait} />
-					</Grid>
-					<Grid item lg={12} md={12}>
-						<AboutCurve className={classes.aboutCurve} />
-					</Grid>
-
-					{isDesktop ? (
+						) : (
+							''
+						)}
 						<Grid
-							className={classes.resumePhotoContainer}
+							className={classes.selfPortraitContainer}
 							container
 							item
 							lg={6}
+							md={12}
+							sm={12}
 							justifyContent="center"
 							alignItems="center"
 						>
-							<ResumePhoto className={classes.resumePhoto} />
+							<SelfPortrait className={classes.selfPortrait} />
 						</Grid>
-					) : (
-						''
-					)}
-					{!isDesktop ? (
+						<Grid item lg={12} md={12} sm={12}>
+							<AboutCurve className={classes.aboutCurve} />
+						</Grid>
+
+						{isDesktop ? (
+							<Grid
+								className={classes.resumePhotoContainer}
+								container
+								item
+								lg={6}
+								justifyContent="center"
+								alignItems="center"
+							>
+								<ResumePhoto className={classes.resumePhoto} />
+							</Grid>
+						) : (
+							''
+						)}
+						{!isDesktop ? (
+							<Grid
+								className={classes.introCardContainer}
+								container
+								item
+								lg={6}
+								md={12}
+								sm={12}
+								direction="column"
+								justifyContent="center"
+								alignItems="center"
+							>
+								<Grid className={classes.introCardTextContainer}>
+									<Typography className={classes.introCardTopText}>
+										I'm <Logo className={classes.introCardLogo} /> -
+									</Typography>
+									<Typography className={classes.introCardBottomText}>
+										UI/UX + Graphic Designer
+									</Typography>
+								</Grid>
+							</Grid>
+						) : (
+							''
+						)}
 						<Grid
-							className={classes.introCardContainer}
+							className={classes.resumeContainer}
 							container
 							item
 							lg={6}
 							md={12}
 							direction="column"
 							justifyContent="center"
-							alignItems="center"
-						>
-							<Grid className={classes.introCardTextContainer}>
-								<Typography className={classes.introCardTopText}>
-									I'm <Logo className={classes.introCardLogo} /> -
-								</Typography>
-								<Typography className={classes.introCardBottomText}>
-									UI/UX + Graphic Designer
-								</Typography>
-							</Grid>
-						</Grid>
-					) : (
-						''
-					)}
-					<Grid
-						className={classes.resumeContainer}
-						container
-						item
-						lg={6}
-						md={12}
-						direction="column"
-						justifyContent="center"
-					>
-						<Grid
-							className={classes.helloContainer}
-							container
-							alignItems="flex-end"
-							justifyContent={!isDesktop ? 'center' : 'flex-start'}
 						>
 							<Grid
-								className={classes.helloFlavor}
+								className={classes.helloContainer}
 								container
-								alignContent="flex-end"
-								justifyContent="flex-start"
+								alignItems="flex-end"
+								justifyContent={!isDesktop ? 'center' : 'flex-start'}
 							>
-								<Typography className={classes.helloText}>HELLO!</Typography>
+								<Grid
+									className={classes.helloFlavor}
+									container
+									alignContent="flex-end"
+									justifyContent="flex-start"
+								>
+									<Typography className={classes.helloText}>HELLO!</Typography>
+								</Grid>
+								<ZigZag />
 							</Grid>
-							<ZigZag className={classes.helloZigZag} />
-						</Grid>
-						<Grid className={classes.resumeTextContainer}>
-							<Typography className={classes.resumeText} variant="body2">
-								I am an UX/UI + Graphic Designer. Possessing the ability to lead
-								and the willingness to be led, I am a team player who can also
-								work well individually.
-							</Typography>
-							<Typography className={classes.resumeText} variant="body2">
-								I am an individual driven to accomplish, to the best of my
-								ability, the tasks given to me. Beyond my personal tasks, I
-								would assist my peers and colleagues whenever I can. As someone
-								who is adventurous and loves to be challenged, I believe that
-								passion and hard work is the key to success.
-							</Typography>
-							<Typography className={classes.resumeText} variant="body2">
-								A designer that seeks to satisfy your needs and translate your
-								wildest dreams into reality.
-							</Typography>
-							<Typography
-								className={classes.resumeEmphasisText}
-								variant="body2"
-							>
-								If you can dream it, I can design it!
-							</Typography>
-						</Grid>
-						<Grid className={classes.resumeButtonContainer}>
-							<Button
-								className={classes.resumeButton}
-								variant="contained"
-								color="secondary"
-								onClick={this.downloadResume}
-							>
-								<Typography className={classes.resumeButtonText}>
-									Download Resume
+							<Grid className={classes.resumeTextContainer}>
+								<Typography className={classes.resumeText} variant="body2">
+									I am an UX/UI + Graphic Designer. Possessing the ability to
+									lead and the willingness to be led, I am a team player who can
+									also work well individually.
 								</Typography>
-							</Button>
+								<Typography className={classes.resumeText} variant="body2">
+									I am an individual driven to accomplish, to the best of my
+									ability, the tasks given to me. Beyond my personal tasks, I
+									would assist my peers and colleagues whenever I can. As
+									someone who is adventurous and loves to be challenged, I
+									believe that passion and hard work is the key to success.
+								</Typography>
+								<Typography className={classes.resumeText} variant="body2">
+									A designer that seeks to satisfy your needs and translate your
+									wildest dreams into reality.
+								</Typography>
+								<Typography
+									className={classes.resumeEmphasisText}
+									variant="body2"
+								>
+									If you can dream it, I can design it!
+								</Typography>
+							</Grid>
+							<Grid className={classes.resumeButtonContainer}>
+								<Button
+									className={classes.resumeButton}
+									variant="contained"
+									color="secondary"
+									onClick={this.downloadResume}
+								>
+									<Typography className={classes.resumeButtonText}>
+										Download Resume
+									</Typography>
+								</Button>
+							</Grid>
 						</Grid>
 					</Grid>
-				</Grid>
-			</div>
+				</div>
+			</Element>
 		);
 	}
 }
@@ -186,11 +191,14 @@ const styles = theme => ({
 	},
 	introCardTextContainer: {
 		zIndex: 2,
-		[theme.breakpoints.up('md')]: {
+		[theme.breakpoints.down('md')]: {
 			display: 'flex',
 			flexDirection: 'column',
 			alignItems: 'center',
 			marginBottom: 80,
+		},
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: 40,
 		},
 		[theme.breakpoints.up('lg')]: {
 			position: 'absolute',
@@ -201,6 +209,10 @@ const styles = theme => ({
 		alignItems: 'center',
 		marginLeft: 10,
 		marginBottom: 12,
+		[theme.breakpoints.down('sm')]: {
+			fontSize: 60,
+			marginBottom: 8,
+		},
 		[theme.breakpoints.up('md')]: {
 			fontSize: 56,
 		},
@@ -210,6 +222,9 @@ const styles = theme => ({
 	},
 	introCardLogo: {
 		margin: '0px 16px',
+		[theme.breakpoints.up('sm')]: {
+			width: 208,
+		},
 	},
 	introCardBottomText: {
 		backgroundColor: '#FAF5B0',
@@ -223,8 +238,11 @@ const styles = theme => ({
 		width: '80%',
 		marginBottom: -64,
 		zIndex: 2,
-		[theme.breakpoints.up('md')]: {
+		[theme.breakpoints.between('md', 'sm')]: {
 			width: '60%',
+		},
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: -48,
 		},
 	},
 	aboutCurve: {
@@ -250,12 +268,17 @@ const styles = theme => ({
 		height: 6,
 		backgroundColor: theme.palette.accent.main,
 		marginRight: 16,
+		[theme.breakpoints.down('sm')]: {
+			width: 208,
+		},
 	},
 	helloText: {
 		fontSize: 45,
 		lineHeight: 0.8,
+		[theme.breakpoints.down('sm')]: {
+			fontSize: 56,
+		},
 	},
-	helloZigZag: {},
 	resumeTextContainer: {
 		paddingRight: 56,
 		[theme.breakpoints.down('md')]: {
@@ -265,17 +288,28 @@ const styles = theme => ({
 			textAlign: 'center',
 			padding: '0px 240px',
 		},
+		[theme.breakpoints.down('sm')]: {
+			padding: '0px 48px',
+		},
 	},
 	resumeText: {
 		marginBottom: 8,
+		[theme.breakpoints.down('sm')]: {
+			fontSize: 26,
+			lineHeight: 1.2,
+		},
 		[theme.breakpoints.up('md')]: {
 			fontSize: 18,
+			lineHeight: 1.2,
 		},
 		[theme.breakpoints.up('lg')]: {
 			fontSize: 14,
 		},
 	},
 	resumeEmphasisText: {
+		[theme.breakpoints.down('sm')]: {
+			fontSize: 32,
+		},
 		[theme.breakpoints.up('md')]: {
 			fontSize: 24,
 		},

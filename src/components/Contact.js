@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import { Element } from 'react-scroll';
 import {
 	ContactPhotos,
 	FBStar,
@@ -15,94 +16,111 @@ class Contact extends React.Component {
 		const { classes } = this.props;
 
 		return (
-			<div className={classes.mainContainer}>
-				<Grid
-					className={classes.contactContainer}
-					container
-					lg={12}
-					md={12}
-					sm={12}
-				>
-					<Grid className={classes.photoContainer} item lg={6} md={12} sm={12}>
-						<RandomShapes className={classes.topShapes} />
-						<ContactPhotos className={classes.contactPhotos} />
-					</Grid>
+			<Element id="contactLink">
+				<div className={classes.mainContainer}>
 					<Grid
-						className={classes.contactTextContainer}
-						item
-						lg={6}
+						className={classes.contactContainer}
+						container
+						lg={12}
 						md={12}
 						sm={12}
 					>
-						<Grid className={classes.contactInfoContainer}>
-							<Typography className={classes.contactTitle}>
-								CONTACT ME!
-							</Typography>
+						<Grid
+							className={classes.photoContainer}
+							item
+							lg={6}
+							md={12}
+							sm={12}
+						>
+							<RandomShapes className={classes.topShapes} />
+							<ContactPhotos className={classes.contactPhotos} />
+						</Grid>
+						<Grid
+							className={classes.contactTextContainer}
+							item
+							lg={6}
+							md={12}
+							sm={12}
+						>
+							<Grid className={classes.contactInfoContainer}>
+								<Typography className={classes.contactTitle}>
+									CONTACT ME!
+								</Typography>
+								<Typography
+									className={classes.contactContent}
+									style={{ marginBottom: 24 }}
+									variant="body2"
+								>
+									If you have a project that i am fit for it or any questions
+									that you would like to ask, feel free to drop me an email and
+									i will get back to you as soon as possible.
+								</Typography>
+								<Typography className={classes.contactContent} variant="body2">
+									Email Address
+									<a
+										className={classes.contactLinkContainer}
+										href="mailto:jessicawst@outlook.com"
+									>
+										<Typography
+											className={classes.contactLinks}
+											variant="body2"
+										>
+											jessicawst@outlook.com
+										</Typography>
+									</a>
+								</Typography>
+								<Typography className={classes.contactContent} variant="body2">
+									Phone Number
+									<a
+										className={classes.contactLinkContainer}
+										href="mailto:jessicawst@outlook.com"
+									>
+										<Typography
+											className={classes.contactLinks}
+											variant="body2"
+										>
+											9187 9338
+										</Typography>
+									</a>
+								</Typography>
+								<Typography className={classes.contactContent} variant="body2">
+									On Web
+									<a
+										className={classes.contactLinkContainer}
+										href="http://jessicawst.com/pfolio/"
+									>
+										<Typography
+											className={classes.contactLinks}
+											variant="body2"
+										>
+											jessicawst.com/pfolio
+										</Typography>
+									</a>
+								</Typography>
+							</Grid>
 							<Typography
 								className={classes.contactContent}
-								style={{ marginBottom: 24 }}
+								style={{ fontWeight: 'bold', letterSpacing: 1, zIndex: 2 }}
 								variant="body2"
 							>
-								If you have a project that i am fit for it or any questions that
-								you would like to ask, feel free to drop me an email and i will
-								get back to you as soon as possible.
+								You can also follow me at:
+								<Grid>
+									<a href="https://www.facebook.com/hamsterwst">
+										<FBStar className={classes.contactIcons} />
+									</a>
+									<a href="https://www.instagram.com/bluzstarz/">
+										<InstaStar className={classes.contactIcons} />
+									</a>
+									<a href="https://www.linkedin.com/in/jessica-wong-shu-ting-a791bb115/">
+										<LinkedinStar className={classes.contactIcons} />
+									</a>
+								</Grid>
 							</Typography>
-							<Typography className={classes.contactContent} variant="body2">
-								Email Address
-								<a
-									className={classes.contactLinkContainer}
-									href="mailto:jessicawst@outlook.com"
-								>
-									<Typography className={classes.contactLinks} variant="body2">
-										jessicawst@outlook.com
-									</Typography>
-								</a>
-							</Typography>
-							<Typography className={classes.contactContent} variant="body2">
-								Phone Number
-								<a
-									className={classes.contactLinkContainer}
-									href="mailto:jessicawst@outlook.com"
-								>
-									<Typography className={classes.contactLinks} variant="body2">
-										9187 9338
-									</Typography>
-								</a>
-							</Typography>
-							<Typography className={classes.contactContent} variant="body2">
-								On Web
-								<a
-									className={classes.contactLinkContainer}
-									href="http://jessicawst.com/pfolio/"
-								>
-									<Typography className={classes.contactLinks} variant="body2">
-										jessicawst.com/pfolio
-									</Typography>
-								</a>
-							</Typography>
+							<RandomShapes className={classes.bottomShapes} />
 						</Grid>
-						<Typography
-							className={classes.contactContent}
-							style={{ fontWeight: 'bold', zIndex: 2 }}
-							variant="body2"
-						>
-							You can also follow me at:
-							<Grid>
-								<a href="https://www.facebook.com/hamsterwst">
-									<FBStar className={classes.contactIcons} />
-								</a>
-								<a href="https://www.instagram.com/bluzstarz/">
-									<InstaStar className={classes.contactIcons} />
-								</a>
-								<a href="https://www.linkedin.com/in/jessica-wong-shu-ting-a791bb115/">
-									<LinkedinStar className={classes.contactIcons} />
-								</a>
-							</Grid>
-						</Typography>
-						<RandomShapes className={classes.bottomShapes} />
 					</Grid>
-				</Grid>
-			</div>
+				</div>
+			</Element>
 		);
 	}
 }
@@ -139,7 +157,7 @@ const styles = theme => ({
 	},
 	contactPhotos: {
 		[theme.breakpoints.down('sm')]: {
-			width: '90%',
+			width: '100%',
 		},
 		[theme.breakpoints.up('md')]: {
 			width: '80%',
@@ -156,6 +174,9 @@ const styles = theme => ({
 		[theme.breakpoints.down('md')]: {
 			alignItems: 'center',
 		},
+		[theme.breakpoints.down('sm')]: {
+			padding: '0px 40px',
+		},
 	},
 	contactInfoContainer: {
 		[theme.breakpoints.down('md')]: {
@@ -164,12 +185,19 @@ const styles = theme => ({
 			alignItems: 'center',
 			width: 440,
 		},
+		[theme.breakpoints.down('sm')]: {
+			width: '100%',
+		},
 	},
 	contactTitle: {
 		color: 'white',
 		fontSize: 56,
 		lineHeight: 1,
 		marginBottom: 32,
+		[theme.breakpoints.down('sm')]: {
+			fontSize: 40,
+			marginBottom: 0,
+		},
 	},
 	contactContent: {
 		color: 'white',
@@ -179,6 +207,9 @@ const styles = theme => ({
 		lineHeight: 1,
 		[theme.breakpoints.down('md')]: {
 			textAlign: 'center',
+		},
+		[theme.breakpoints.down('sm')]: {
+			lineHeight: 1.4,
 		},
 	},
 	contactLinkContainer: {
@@ -193,6 +224,10 @@ const styles = theme => ({
 		margin: '16px 32px 0px 0px',
 		[theme.breakpoints.down('md')]: {
 			margin: 16,
+		},
+		[theme.breakpoints.down('sm')]: {
+			width: 32,
+			margin: 12,
 		},
 	},
 	bottomShapes: {

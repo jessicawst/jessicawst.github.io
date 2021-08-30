@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import { Element } from 'react-scroll';
 import workList from '../data/workList';
 import { WorkSlant, Star, LatestWorkStar, ComingSoonStar } from '../assets';
 import withMediaQuery from '../utils/withMediaQuery';
@@ -11,54 +12,56 @@ class Work extends React.Component {
 		const { classes, isDesktop, isTablet, isMobile } = this.props;
 
 		return (
-			<div className={classes.mainContainer}>
-				<WorkSlant className={classes.topSlant} />
-				<Grid
-					className={classes.workTitleContainer}
-					container
-					direction="column"
-					alignContent="center"
-					justifyContent="center"
-				>
-					<Typography className={classes.workTitleText}>MY WORK</Typography>
-					<Grid className={classes.titleAccent}>
-						<Typography className={classes.titleAccentText}>
-							awesome projects
-						</Typography>
-						<Star className={classes.star} />
-					</Grid>
-				</Grid>
-				<div className={classes.workContainer}>
+			<Element id="workLink">
+				<div className={classes.mainContainer}>
+					<WorkSlant className={classes.topSlant} />
 					<Grid
-						className={classes.workGridContainer}
+						className={classes.workTitleContainer}
 						container
-						lg={12}
-						md={12}
-						sm={12}
-						spacing={2}
-						alignItems="center"
+						direction="column"
+						alignContent="center"
+						justifyContent="center"
 					>
-						{workList.map((item, index) => (
-							<Grid item lg={4} md={6} sm={12}>
-								<Grid className={classes.workListItem}>
-									{item.logo({ className: classes.workListItemLogo }) || ''}
-									{item.isLatest ? (
-										<LatestWorkStar className={classes.workListItemStar} />
-									) : (
-										''
-									)}
-									{item.isComingSoon ? (
-										<ComingSoonStar className={classes.workListItemStar} />
-									) : (
-										''
-									)}
-								</Grid>
-							</Grid>
-						))}
+						<Typography className={classes.workTitleText}>MY WORK</Typography>
+						<Grid className={classes.titleAccent}>
+							<Typography className={classes.titleAccentText}>
+								awesome projects
+							</Typography>
+							<Star className={classes.star} />
+						</Grid>
 					</Grid>
+					<div className={classes.workContainer}>
+						<Grid
+							className={classes.workGridContainer}
+							container
+							lg={12}
+							md={12}
+							sm={12}
+							spacing={2}
+							alignItems="center"
+						>
+							{workList.map((item, index) => (
+								<Grid item lg={4} md={6} sm={12}>
+									<Grid className={classes.workListItem}>
+										{item.logo({ className: classes.workListItemLogo }) || ''}
+										{item.isLatest ? (
+											<LatestWorkStar className={classes.workListItemStar} />
+										) : (
+											''
+										)}
+										{item.isComingSoon ? (
+											<ComingSoonStar className={classes.workListItemStar} />
+										) : (
+											''
+										)}
+									</Grid>
+								</Grid>
+							))}
+						</Grid>
+					</div>
+					<WorkSlant className={classes.bottomSlant} />
 				</div>
-				<WorkSlant className={classes.bottomSlant} />
-			</div>
+			</Element>
 		);
 	}
 }
@@ -73,8 +76,16 @@ const styles = theme => ({
 	workTitleContainer: {
 		height: 80,
 		marginTop: -85,
+		[theme.breakpoints.down('sm')]: {
+			height: 40,
+			marginTop: -5,
+			backgroundColor: theme.palette.secondary.main + '1A',
+		},
 	},
 	workTitleText: {
+		[theme.breakpoints.down('sm')]: {
+			fontSize: 36,
+		},
 		[theme.breakpoints.up('md')]: {
 			fontSize: 44,
 		},
@@ -90,10 +101,13 @@ const styles = theme => ({
 		[theme.breakpoints.down('md')]: {
 			marginLeft: 40,
 		},
+		[theme.breakpoints.down('sm')]: {
+			marginLeft: 32,
+		},
 	},
 	titleAccentText: {
 		lineHeight: 1,
-		[theme.breakpoints.down('md')]: {
+		[theme.breakpoints.between('md', 'sm')]: {
 			fontSize: 20,
 		},
 	},
@@ -101,6 +115,9 @@ const styles = theme => ({
 		transform: 'translate(128px, -64px)',
 		[theme.breakpoints.down('md')]: {
 			transform: 'translate(164px, -72px)',
+		},
+		[theme.breakpoints.down('sm')]: {
+			transform: 'translate(128px, -64px)',
 		},
 	},
 	workContainer: {
@@ -112,7 +129,7 @@ const styles = theme => ({
 	},
 	workGridContainer: {
 		[theme.breakpoints.down('sm')]: {
-			width: 280,
+			width: '60vw',
 		},
 		[theme.breakpoints.up('md')]: {
 			width: 560,
@@ -129,6 +146,10 @@ const styles = theme => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+		[theme.breakpoints.down('sm')]: {
+			width: 'calc(60vw - 16px)',
+			height: 'calc(60vw - 16px)',
+		},
 	},
 	workListItemLogo: {
 		width: '100%',
@@ -139,6 +160,9 @@ const styles = theme => ({
 		width: 64,
 		alignSelf: 'flex-start',
 		transform: 'translate(112px, -32px)',
+		[theme.breakpoints.down('sm')]: {
+			transform: 'translate(calc(30vw - 8px), -32px)',
+		},
 	},
 	bottomSlant: {
 		width: '100%',

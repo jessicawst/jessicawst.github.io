@@ -3,11 +3,18 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { Link } from 'react-scroll';
 import { ShuLogo } from '../assets';
-import { Typography } from '@material-ui/core';
+import {
+	SwipeableDrawer,
+	Divider,
+	List,
+	ListItem,
+	Typography,
+	IconButton,
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import withMediaQuery from '../utils/withMediaQuery';
-
-const tabIndicatorWidths = [96, 96, 100];
 
 const StyledTabs = withStyles(theme => ({
 	flexContainer: {
@@ -27,37 +34,176 @@ const StyledTabs = withStyles(theme => ({
 	},
 }))(props => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
-const tabLabel = label => (
-	<Typography style={{ fontSize: 20, height: '100%', margin: '0px 20px' }}>
-		{label}
-	</Typography>
+const TabLabel = props => (
+	<Link
+		to={props.to}
+		offset={props.offset}
+		onClick={props.onClick}
+		duration={1000}
+		smooth
+		ignoreCancelEvents
+	>
+		<Typography style={{ fontSize: 20, height: '100%', margin: '0px 20px' }}>
+			{props.label}
+		</Typography>
+	</Link>
 );
 
-function TopBar(props) {
-	const { isDesktop } = props;
+const SwipeableDrawerList = props => (
+	<List style={{ width: '100%' }}>
+		<ListItem style={{ justifyContent: 'center' }}>
+			<Link
+				to="aboutLink"
+				offset={-96}
+				duration={1000}
+				onClick={() => props.closeSwipeableDrawer()}
+			>
+				<Typography style={{ fontSize: 20 }}>ABOUT ME</Typography>
+			</Link>
+		</ListItem>
+		<Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
+		<ListItem style={{ justifyContent: 'center' }}>
+			<Link
+				to="workLink"
+				duration={1000}
+				onClick={() => props.closeSwipeableDrawer()}
+			>
+				<Typography style={{ fontSize: 20 }}>MY WORK</Typography>
+			</Link>
+		</ListItem>
+		<Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
+		<ListItem style={{ justifyContent: 'center' }}>
+			<Link
+				to="contactLink"
+				offset={-56}
+				duration={1000}
+				onClick={() => props.closeSwipeableDrawer()}
+			>
+				<Typography style={{ fontSize: 20 }}>CONTACT ME</Typography>
+			</Link>
+		</ListItem>
+	</List>
+);
+
+const DesktopBar = props => {
+	const { classes, isDesktop } = props;
 	const [value, setValue] = React.useState(0);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
+
 	return (
-		<AppBar
-			style={{ flexDirection: 'row', boxShadow: 'none', height: 96 }}
-			position="fixed"
-		>
-			<ShuLogo style={{ margin: 16, width: 64 }} />
+		<AppBar className={classes.mainContainer} position="fixed">
+			<ShuLogo className={classes.mainLogo} />
 			<StyledTabs
-				style={{ height: '100%', width: '100%' }}
+				className={classes.tabContainer}
 				value={value}
 				onChange={handleChange}
 				variant={isDesktop ? 'standard' : 'fullWidth'}
 			>
-				<Tab label={tabLabel('ABOUT ME')} />
-				<Tab label={tabLabel('MY WORK')} />
-				<Tab label={tabLabel('CONTACT ME')} />
+				<Tab
+					label={
+						<TabLabel
+							to="aboutLink"
+							label="ABOUT ME"
+							offset={-96}
+							onClick={() => setValue(0)}
+						/>
+					}
+				/>
+				<Tab
+					label={
+						<TabLabel
+							to="workLink"
+							label="MY WORK"
+							onClick={() => setValue(1)}
+						/>
+					}
+				/>
+				<Tab
+					label={
+						<TabLabel
+							to="contactLink"
+							label="CONTACT ME"
+							offset={-56}
+							onClick={() => setValue(2)}
+						/>
+					}
+				/>
 			</StyledTabs>
 		</AppBar>
 	);
+};
+
+const MobileBar = props => {
+	const { classes } = props;
+	const [isOpen, setIsOpen] = React.useState(false);
+
+	const openSwipeableDrawer = () => {
+		setIsOpen(true);
+	};
+
+	const closeSwipeableDrawer = () => {
+		setIsOpen(false);
+	};
+
+	return (
+		<AppBar
+			className={classes.mainContainer}
+			style={{ justifyContent: 'space-between' }}
+			position="fixed"
+		>
+			<ShuLogo className={classes.mainLogo} />
+			<IconButton onClick={openSwipeableDrawer}>
+				<MenuIcon className={classes.drawerIcon} />
+			</IconButton>
+			<SwipeableDrawer
+				classes={{ paper: classes.drawerContainer }}
+				anchor="top"
+				open={isOpen}
+				onOpen={openSwipeableDrawer}
+				onClose={closeSwipeableDrawer}
+			>
+				<SwipeableDrawerList
+					closeSwipeableDrawer={() => closeSwipeableDrawer()}
+				/>
+			</SwipeableDrawer>
+		</AppBar>
+	);
+};
+
+function TopBar(props) {
+	const { isMobile } = props;
+
+	return isMobile ? <MobileBar {...props} /> : <DesktopBar {...props} />;
 }
 
-export default withMediaQuery(TopBar);
+const styles = theme => ({
+	mainContainer: {
+		flexDirection: 'row',
+		boxShadow: 'none',
+		height: 96,
+	},
+	mainLogo: {
+		margin: 16,
+		width: 64,
+	},
+	tabContainer: {
+		width: '100%',
+		height: '100%',
+	},
+	drawerIcon: {
+		fill: 'white',
+		margin: 16,
+		width: 64,
+		height: 64,
+	},
+	drawerContainer: {
+		padding: '0 10vw',
+		backgroundColor: theme.palette.primary.main,
+		alignItems: 'center',
+	},
+});
+
+export default withStyles(styles)(withMediaQuery(TopBar));
