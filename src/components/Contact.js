@@ -10,10 +10,11 @@ import {
 	LinkedinStar,
 	RandomShapes,
 } from '../assets';
+import withMediaQuery from '../utils/withMediaQuery';
 
 class Contact extends React.Component {
 	render() {
-		const { classes } = this.props;
+		const { classes, isMobile } = this.props;
 
 		return (
 			<Element id="contactLink">
@@ -48,7 +49,7 @@ class Contact extends React.Component {
 								</Typography>
 								<Typography
 									className={classes.contactContent}
-									style={{ marginBottom: 24 }}
+									style={{ marginBottom: isMobile ? 8 : 24 }}
 									variant="body2"
 								>
 									If you have a project that i am fit for it or any questions
@@ -130,6 +131,9 @@ const styles = theme => ({
 		width: '100%',
 		height: 'fit-content',
 		padding: 40,
+		[theme.breakpoints.down('xs')]: {
+			padding: 20,
+		},
 	},
 	contactContainer: {
 		backgroundColor: theme.palette.secondary.main,
@@ -139,6 +143,9 @@ const styles = theme => ({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+		[theme.breakpoints.down('xs')]: {
+			padding: 20,
+		},
 	},
 	topShapes: {
 		position: 'absolute',
@@ -174,7 +181,7 @@ const styles = theme => ({
 		[theme.breakpoints.down('md')]: {
 			alignItems: 'center',
 		},
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('xs')]: {
 			padding: '0px 40px',
 		},
 	},
@@ -185,7 +192,7 @@ const styles = theme => ({
 			alignItems: 'center',
 			width: 440,
 		},
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('xs')]: {
 			width: '100%',
 		},
 	},
@@ -194,9 +201,11 @@ const styles = theme => ({
 		fontSize: 56,
 		lineHeight: 1,
 		marginBottom: 32,
-		[theme.breakpoints.down('sm')]: {
-			fontSize: 40,
+		[theme.breakpoints.down('md')]: {
 			marginBottom: 0,
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 24,
 		},
 	},
 	contactContent: {
@@ -208,8 +217,9 @@ const styles = theme => ({
 		[theme.breakpoints.down('md')]: {
 			textAlign: 'center',
 		},
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('xs')]: {
 			lineHeight: 1.4,
+			fontSize: 12,
 		},
 	},
 	contactLinkContainer: {
@@ -218,6 +228,9 @@ const styles = theme => ({
 	contactLinks: {
 		color: 'white',
 		fontSize: 16,
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 12,
+		},
 	},
 	contactIcons: {
 		width: 40,
@@ -229,14 +242,24 @@ const styles = theme => ({
 			width: 32,
 			margin: 12,
 		},
+		[theme.breakpoints.down('xs')]: {
+			margin: 8,
+		},
 	},
 	bottomShapes: {
 		position: 'absolute',
 		width: 320,
 		alignSelf: 'flex-end',
-		transform: 'translate(80px, 320px)',
+		// transform: 'translate(80px, 320px)',
 		opacity: 0.1,
+		margin: '320px 0px 0px 80px',
+		[theme.breakpoints.down('md')]: {
+			marginTop: 0,
+		},
+		[theme.breakpoints.down('sm')]: {
+			marginLeft: 40,
+		},
 	},
 });
 
-export default withStyles(styles)(Contact);
+export default withStyles(styles)(withMediaQuery(Contact));

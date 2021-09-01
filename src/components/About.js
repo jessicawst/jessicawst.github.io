@@ -23,12 +23,12 @@ class About extends React.Component {
 	}
 
 	render() {
-		const { classes, isDesktop, isTablet, isMobile } = this.props;
+		const { classes, isDesktop } = this.props;
 
 		return (
 			<Element id="aboutLink">
 				<div className={classes.mainContainer}>
-					<Grid container lg={12} md={12}>
+					<Grid container>
 						{isDesktop ? (
 							<Grid
 								className={classes.introCardContainer}
@@ -59,12 +59,13 @@ class About extends React.Component {
 							lg={6}
 							md={12}
 							sm={12}
+							xs={12}
 							justifyContent="center"
 							alignItems="center"
 						>
 							<SelfPortrait className={classes.selfPortrait} />
 						</Grid>
-						<Grid item lg={12} md={12} sm={12}>
+						<Grid item lg={12} md={12} sm={12} xs={12}>
 							<AboutCurve className={classes.aboutCurve} />
 						</Grid>
 
@@ -90,6 +91,7 @@ class About extends React.Component {
 								lg={6}
 								md={12}
 								sm={12}
+								xs={12}
 								direction="column"
 								justifyContent="center"
 								alignItems="center"
@@ -112,6 +114,8 @@ class About extends React.Component {
 							item
 							lg={6}
 							md={12}
+							sm={12}
+							xs={12}
 							direction="column"
 							justifyContent="center"
 						>
@@ -129,7 +133,7 @@ class About extends React.Component {
 								>
 									<Typography className={classes.helloText}>HELLO!</Typography>
 								</Grid>
-								<ZigZag />
+								<ZigZag className={classes.helloZigZag} />
 							</Grid>
 							<Grid className={classes.resumeTextContainer}>
 								<Typography className={classes.resumeText} variant="body2">
@@ -195,10 +199,10 @@ const styles = theme => ({
 			display: 'flex',
 			flexDirection: 'column',
 			alignItems: 'center',
-			marginBottom: 80,
-		},
-		[theme.breakpoints.down('sm')]: {
 			marginBottom: 40,
+		},
+		[theme.breakpoints.down('xs')]: {
+			marginBottom: 20,
 		},
 		[theme.breakpoints.up('lg')]: {
 			position: 'absolute',
@@ -209,12 +213,13 @@ const styles = theme => ({
 		alignItems: 'center',
 		marginLeft: 10,
 		marginBottom: 12,
-		[theme.breakpoints.down('sm')]: {
-			fontSize: 60,
+		[theme.breakpoints.down('md')]: {
+			fontSize: 56,
 			marginBottom: 8,
 		},
-		[theme.breakpoints.up('md')]: {
-			fontSize: 56,
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 32,
+			marginBottom: 0,
 		},
 		[theme.breakpoints.up('lg')]: {
 			fontSize: 48,
@@ -222,14 +227,22 @@ const styles = theme => ({
 	},
 	introCardLogo: {
 		margin: '0px 16px',
+		[theme.breakpoints.down('xs')]: {
+			width: 112,
+			margin: '0px 8px',
+		},
 		[theme.breakpoints.up('sm')]: {
 			width: 208,
 		},
 	},
 	introCardBottomText: {
-		backgroundColor: '#FAF5B0',
+		backgroundColor: theme.palette.accent.main,
 		padding: '8px 28px',
 		fontSize: 26,
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 12,
+			padding: '4px 16px',
+		},
 	},
 	selfPortraitContainer: {
 		backgroundColor: theme.palette.primary.main,
@@ -237,12 +250,16 @@ const styles = theme => ({
 	selfPortrait: {
 		width: '80%',
 		marginBottom: -64,
-		zIndex: 2,
+		zIndex: 10,
 		[theme.breakpoints.between('md', 'sm')]: {
 			width: '60%',
 		},
 		[theme.breakpoints.down('sm')]: {
 			marginBottom: -48,
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '65%',
+			marginBottom: -24,
 		},
 	},
 	aboutCurve: {
@@ -268,15 +285,27 @@ const styles = theme => ({
 		height: 6,
 		backgroundColor: theme.palette.accent.main,
 		marginRight: 16,
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			width: 208,
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '35%',
+			marginRight: 8,
 		},
 	},
 	helloText: {
 		fontSize: 45,
 		lineHeight: 0.8,
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			fontSize: 56,
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 32,
+		},
+	},
+	helloZigZag: {
+		[theme.breakpoints.down('xs')]: {
+			width: '30%',
 		},
 	},
 	resumeTextContainer: {
@@ -286,20 +315,20 @@ const styles = theme => ({
 			flexDirection: 'column',
 			alignItems: 'center',
 			textAlign: 'center',
-			padding: '0px 240px',
+			padding: '0px 160px',
 		},
-		[theme.breakpoints.down('sm')]: {
-			padding: '0px 48px',
+		[theme.breakpoints.down('xs')]: {
+			padding: '0px 16px',
 		},
 	},
 	resumeText: {
 		marginBottom: 8,
-		[theme.breakpoints.down('sm')]: {
-			fontSize: 26,
+		[theme.breakpoints.down('md')]: {
+			fontSize: 18,
 			lineHeight: 1.2,
 		},
-		[theme.breakpoints.up('md')]: {
-			fontSize: 18,
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 14,
 			lineHeight: 1.2,
 		},
 		[theme.breakpoints.up('lg')]: {
@@ -307,11 +336,11 @@ const styles = theme => ({
 		},
 	},
 	resumeEmphasisText: {
-		[theme.breakpoints.down('sm')]: {
-			fontSize: 32,
-		},
-		[theme.breakpoints.up('md')]: {
+		[theme.breakpoints.down('md')]: {
 			fontSize: 24,
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 18,
 		},
 		[theme.breakpoints.up('lg')]: {
 			fontSize: 18,
@@ -332,12 +361,19 @@ const styles = theme => ({
 			height: 56,
 			width: 214,
 		},
+		[theme.breakpoints.down('xs')]: {
+			height: 'auto',
+			width: 'auto',
+		},
 	},
 	resumeButtonText: {
 		color: 'white',
 		textTransform: 'capitalize',
 		[theme.breakpoints.down('md')]: {
 			fontSize: 20,
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 14,
 		},
 	},
 });

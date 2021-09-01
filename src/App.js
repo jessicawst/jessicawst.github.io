@@ -99,9 +99,9 @@ const theme = createTheme({
 	breakpoints: {
 		values: {
 			xs: 0,
-			sm: 320, // Mobile
-			md: 768, // Tablet
-			lg: 1200, // Web
+			sm: 321, // Mobile
+			md: 769, // Tablet
+			lg: 1201, // Web
 			xl: 1920,
 		},
 	},
@@ -111,8 +111,8 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
+			<TopBar />
 			<div>
-				<TopBar />
 				<About />
 				<Work />
 				<Contact />

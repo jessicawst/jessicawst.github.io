@@ -15,13 +15,20 @@ const withMediaQuery =
 export default withMediaQuery([
 	[
 		'isMobile',
-		theme => theme.breakpoints.down('sm'),
+		theme => theme.breakpoints.down('xs'),
 		{
 			defaultMatches: true,
 		},
 	],
 	[
-		'isTablet',
+		'isSmallTablet',
+		theme => theme.breakpoints.between('sm', 'md'),
+		{
+			defaultMatches: true,
+		},
+	],
+	[
+		'isBigTablet',
 		theme => theme.breakpoints.between('md', 'lg'),
 		{
 			defaultMatches: true,

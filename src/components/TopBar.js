@@ -39,7 +39,9 @@ const TabLabel = props => (
 		to={props.to}
 		offset={props.offset}
 		onClick={props.onClick}
+		onSetActive={props.onClick}
 		duration={1000}
+		spy
 		smooth
 		ignoreCancelEvents
 	>

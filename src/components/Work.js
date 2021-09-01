@@ -9,7 +9,7 @@ import withMediaQuery from '../utils/withMediaQuery';
 
 class Work extends React.Component {
 	render() {
-		const { classes, isDesktop, isTablet, isMobile } = this.props;
+		const { classes } = this.props;
 
 		return (
 			<Element id="workLink">
@@ -41,7 +41,7 @@ class Work extends React.Component {
 							alignItems="center"
 						>
 							{workList.map((item, index) => (
-								<Grid item lg={4} md={6} sm={12}>
+								<Grid item lg={4} md={6} sm={6} xs={12}>
 									<Grid className={classes.workListItem}>
 										{item.logo({ className: classes.workListItemLogo }) || ''}
 										{item.isLatest ? (
@@ -128,10 +128,10 @@ const styles = theme => ({
 		padding: 40,
 	},
 	workGridContainer: {
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('xs')]: {
 			width: '60vw',
 		},
-		[theme.breakpoints.up('md')]: {
+		[theme.breakpoints.up('sm')]: {
 			width: 560,
 		},
 		[theme.breakpoints.up('lg')]: {
@@ -146,7 +146,7 @@ const styles = theme => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('xs')]: {
 			width: 'calc(60vw - 16px)',
 			height: 'calc(60vw - 16px)',
 		},
@@ -160,7 +160,7 @@ const styles = theme => ({
 		width: 64,
 		alignSelf: 'flex-start',
 		transform: 'translate(112px, -32px)',
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('xs')]: {
 			transform: 'translate(calc(30vw - 8px), -32px)',
 		},
 	},
