@@ -27,7 +27,7 @@ const workList = [
 		file: '',
 		isComingSoon: true,
 		isLatest: false,
-		link: '/breastcare',
+		link: 'breastcare',
 	},
 	{
 		name: "Julie's Biscuit",
@@ -40,7 +40,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: true,
-		link: '/juliesbiscuit',
+		link: 'juliesbiscuit',
 	},
 	{
 		name: 'Facebook Ads',
@@ -53,7 +53,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/fbad',
+		link: 'FBartworkothers', //'fbad',
 	},
 	{
 		name: 'Facebook Ads ID Edition',
@@ -66,7 +66,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/fbadid',
+		link: 'FBartworkID', //'fbadid',
 	},
 	{
 		name: 'Former Portfolio Design',
@@ -79,7 +79,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/shutingoldpflio',
+		link: 'portfolio', //'shutingoldpflio',
 	},
 	{
 		name: 'Bee Cheng Xiang',
@@ -92,7 +92,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/beechengxiang',
+		link: 'BCH', //'beechengxiang',
 	},
 	{
 		name: 'Earnest And Celestine',
@@ -105,7 +105,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/ernestncelestine',
+		link: 'ernestcelestine',
 	},
 	{
 		name: 'City of Fireflies',
@@ -118,7 +118,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/cityfireflies',
+		link: 'cityfireflies',
 	},
 	{
 		name: 'Cooper Black',
@@ -131,7 +131,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/cooperblack',
+		link: 'cooperblack',
 	},
 	{
 		name: 'Every Drop Counts',
@@ -144,7 +144,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/everydrop',
+		link: 'water', //'everydrop',
 	},
 	{
 		name: 'Baby Log',
@@ -157,7 +157,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/babylog',
+		link: 'babylog',
 	},
 	{
 		name: 'Bring Me Back To Joo Chiat',
@@ -170,7 +170,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/joochiat',
+		link: 'joochiat',
 	},
 	{
 		name: 'Let Your Imagination Fly',
@@ -183,7 +183,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/imagination',
+		link: 'DFXweb', //'imagination',
 	},
 	{
 		name: 'Welcome to iStorybook',
@@ -196,7 +196,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/istorybook',
+		link: 'istorybook',
 	},
 	{
 		name: 'Fruitee Production',
@@ -209,7 +209,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/fruitee',
+		link: 'nurse', //'fruitee',
 	},
 	{
 		name: 'Time',
@@ -222,7 +222,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: '/time',
+		link: 'SP2', //'time',
 	},
 ];
 

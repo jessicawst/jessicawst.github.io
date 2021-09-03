@@ -52,9 +52,9 @@ class Contact extends React.Component {
 									style={{ marginBottom: isMobile ? 8 : 24 }}
 									variant="body2"
 								>
-									If you have a project that i am fit for it or any questions
+									If you have a project that I am fit for it or any questions
 									that you would like to ask, feel free to drop me an email and
-									i will get back to you as soon as possible.
+									I will get back to you as soon as possible.
 								</Typography>
 								<Typography className={classes.contactContent} variant="body2">
 									Email Address
@@ -95,6 +95,20 @@ class Contact extends React.Component {
 											variant="body2"
 										>
 											jessicawst.com/pfolio
+										</Typography>
+									</a>
+								</Typography>
+								<Typography className={classes.contactContent} variant="body2">
+									Website developed by
+									<a
+										className={classes.contactLinkContainer}
+										href="https://keithcheongwaikeong.github.io/"
+									>
+										<Typography
+											className={classes.contactLinks}
+											variant="body2"
+										>
+											keithcheongwaikeong.github.io
 										</Typography>
 									</a>
 								</Typography>

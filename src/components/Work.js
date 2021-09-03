@@ -42,7 +42,14 @@ class Work extends React.Component {
 						>
 							{workList.map((item, index) => (
 								<Grid item lg={4} md={6} sm={6} xs={12}>
-									<Grid className={classes.workListItem}>
+									<a
+										className={classes.workListItem}
+										href={
+											item.isComingSoon
+												? 'http://jessicawst.com/pfolio/'
+												: `http://jessicawst.com/pfolio/${item.link}.html`
+										}
+									>
 										{item.logo({ className: classes.workListItemLogo }) || ''}
 										{item.isLatest ? (
 											<LatestWorkStar className={classes.workListItemStar} />
@@ -54,7 +61,7 @@ class Work extends React.Component {
 										) : (
 											''
 										)}
-									</Grid>
+									</a>
 								</Grid>
 							))}
 						</Grid>
