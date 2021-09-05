@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import ProximaSoftBlack from './fonts/ProximaSoft-Black.woff2';
@@ -6,9 +7,8 @@ import ProximaSoftBold from './fonts/ProximaSoft-Bold.woff2';
 import ProximaSoftRegular from './fonts/ProximaSoft-Regular.woff2';
 import ProximaSoftMedium from './fonts/ProximaSoft-Medium.woff2';
 import TopBar from './components/TopBar';
-import About from './components/About';
-import Work from './components/Work';
-import Contact from './components/Contact';
+import Home from './components/Home';
+import WorkDetails from './components/WorkDetails';
 
 const proximaSoftRegular = {
 	fontFamily: 'ProximaSoft-Regular',
@@ -108,15 +108,21 @@ const theme = createTheme({
 });
 
 function App() {
+	const [topBarValue, setTopBarValue] = React.useState(0);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<TopBar />
-			<div>
-				<About />
-				<Work />
-				<Contact />
-			</div>
+			<BrowserRouter>
+				<TopBar value={topBarValue} setValue={setTopBarValue} />
+				<Switch>
+					<Route path="/:id" component={WorkDetails} />
+					<Route
+						path="/"
+						render={() => <Home setTopBarValue={setTopBarValue} />}
+					/>
+				</Switch>
+			</BrowserRouter>
 		</ThemeProvider>
 	);
 }

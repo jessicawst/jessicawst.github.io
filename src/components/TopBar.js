@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import withMediaQuery from '../utils/withMediaQuery';
+import { useHistory } from 'react-router-dom';
 
 const StyledTabs = withStyles(theme => ({
 	flexContainer: {
@@ -88,8 +89,8 @@ const SwipeableDrawerList = props => (
 );
 
 const DesktopBar = props => {
-	const { classes, isDesktop } = props;
-	const [value, setValue] = React.useState(0);
+	const { classes, isDesktop, value, setValue } = props;
+	const history = useHistory();
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -110,7 +111,10 @@ const DesktopBar = props => {
 							to="aboutLink"
 							label="ABOUT ME"
 							offset={-96}
-							onClick={() => setValue(0)}
+							onClick={() => {
+								history.push('/');
+								setValue(0);
+							}}
 						/>
 					}
 				/>
@@ -119,7 +123,10 @@ const DesktopBar = props => {
 						<TabLabel
 							to="workLink"
 							label="MY WORK"
-							onClick={() => setValue(1)}
+							onClick={() => {
+								history.push('/');
+								setValue(1);
+							}}
 						/>
 					}
 				/>
@@ -129,7 +136,10 @@ const DesktopBar = props => {
 							to="contactLink"
 							label="CONTACT ME"
 							offset={-56}
-							onClick={() => setValue(2)}
+							onClick={() => {
+								history.push('/');
+								setValue(2);
+							}}
 						/>
 					}
 				/>

@@ -6,6 +6,7 @@ import { Element } from 'react-scroll';
 import workList from '../data/workList';
 import { WorkSlant, Star, LatestWorkStar, ComingSoonStar } from '../assets';
 import withMediaQuery from '../utils/withMediaQuery';
+import { Button } from '@material-ui/core';
 
 class Work extends React.Component {
 	render() {
@@ -42,13 +43,13 @@ class Work extends React.Component {
 						>
 							{workList.map((item, index) => (
 								<Grid item lg={4} md={6} sm={6} xs={12}>
-									<a
+									<Button
 										className={classes.workListItem}
-										href={
-											item.isComingSoon
-												? 'http://jessicawst.com/pfolio/'
-												: `http://jessicawst.com/pfolio/${item.link}.html`
-										}
+										href={`${item.link}`}
+										disableRipple
+										disableTouchRipple
+										disableFocusRipple
+										disableElevation
 									>
 										{item.logo({ className: classes.workListItemLogo }) || ''}
 										{item.isLatest ? (
@@ -61,7 +62,7 @@ class Work extends React.Component {
 										) : (
 											''
 										)}
-									</a>
+									</Button>
 								</Grid>
 							))}
 						</Grid>
@@ -146,7 +147,7 @@ const styles = theme => ({
 		},
 	},
 	workListItem: {
-		backgroundColor: 'inherit',
+		backgroundColor: 'transparent',
 		width: 264,
 		height: 264,
 		borderRadius: 8,
@@ -156,6 +157,9 @@ const styles = theme => ({
 		[theme.breakpoints.down('xs')]: {
 			width: 'calc(60vw - 16px)',
 			height: 'calc(60vw - 16px)',
+		},
+		'&:hover': {
+			backgroundColor: 'transparent',
 		},
 	},
 	workListItemLogo: {
