@@ -18,7 +18,7 @@ class About extends React.Component {
 	downloadResume() {
 		const link = document.createElement('a');
 		link.download = `Shuting_Resume.pdf`;
-		link.href = 'resume/Shuting_Resume.pdf';
+		link.href = 'pdfs/Shuting_Resume.pdf';
 		link.click();
 	}
 

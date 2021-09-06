@@ -1,4 +1,5 @@
 import React from 'react';
+import { pdfjs } from 'react-pdf';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -109,6 +110,7 @@ const theme = createTheme({
 
 function App() {
 	const [topBarValue, setTopBarValue] = React.useState(0);
+	pdfjs.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 
 	return (
 		<ThemeProvider theme={theme}>

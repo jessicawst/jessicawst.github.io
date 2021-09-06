@@ -1,5 +1,5 @@
 import breastcare from './breastcare.png';
-import juliesbiscuit from './juliesbiscuit.png';
+import juliesbiscuit from './juliesbiscuit/juliesbiscuit.png';
 import fbad from './fbad.png';
 import fbadid from './fbadid.png';
 import shutingoldpflio from './shutingoldpflio.png';
@@ -36,7 +36,7 @@ const workList = [
 		description: `Choose a Malaysian household brand that is loved by many. Julie's Biscuit started in 1985. Many people have perceive Julie's as "Nostagia", "Traditional" and "Childhood Biscuit"`,
 		logo: props => <img {...props} src={juliesbiscuit} alt="" />,
 		images: [],
-		video: '',
+		video: 'videos/julie-biscuit-video.mp4',
 		file: '',
 		isComingSoon: false,
 		isLatest: true,

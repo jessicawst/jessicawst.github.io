@@ -10,6 +10,8 @@
     "font-face": "^2.3.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-pdf": "^5.3.2",
+    "react-player": "^2.9.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-scroll": "^1.8.3",
