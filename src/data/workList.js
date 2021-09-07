@@ -37,7 +37,7 @@ const workList = [
 		logo: props => <img {...props} src={juliesbiscuit} alt="" />,
 		images: [],
 		video: 'videos/julie-biscuit-video.mp4',
-		file: '',
+		file: 'pdfs/Julies_Brand_Bible.pdf',
 		isComingSoon: false,
 		isLatest: true,
 		link: 'juliesbiscuit',
