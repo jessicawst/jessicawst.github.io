@@ -1,6 +1,7 @@
 import breastcare from './breastcare.png';
 import juliesbiscuit from './juliesbiscuit/juliesbiscuit.png';
-import fbad from './fbad.png';
+import fbad from './fbad/fbad.png';
+import fbadoverall from './fbad/fbadoverall.png';
 import fbadid from './fbadid.png';
 import shutingoldpflio from './shutingoldpflio.png';
 import beechengxiang from './beechengxiang.png';
@@ -35,7 +36,7 @@ const workList = [
 		tags: [`Research`, `Logo Design`, `Book Design`],
 		description: `Choose a Malaysian household brand that is loved by many. Julie's Biscuit started in 1985. Many people have perceive Julie's as "Nostagia", "Traditional" and "Childhood Biscuit"`,
 		logo: props => <img {...props} src={juliesbiscuit} alt="" />,
-		images: [],
+		images: props => <img {...props} src={fbadoverall} alt="" />,
 		video: 'videos/julie-biscuit-video.mp4',
 		file: 'pdfs/Julies_Brand_Bible.pdf',
 		isComingSoon: false,
@@ -53,7 +54,7 @@ const workList = [
 		file: '',
 		isComingSoon: false,
 		isLatest: false,
-		link: 'FBartworkothers', //'fbad',
+		link: 'FBartworkothers',
 	},
 	{
 		name: 'Facebook Ads ID Edition',

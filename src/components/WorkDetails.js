@@ -5,18 +5,43 @@ import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import workList from '../data/workList';
 import PDFViewer from '../utils/PDFViewer';
+import withMediaQuery from '../utils/withMediaQuery';
 
 const WorkDetails = props => {
-	const { classes, match } = props;
+	const { classes, match, isDesktop, isMobile } = props;
 
 	const currentWork = workList.find(item => item.link === match.params.id);
 	if (!currentWork) return <Redirect to="/" />;
 
-	const { name, title, tags, description, logo, video, file } = currentWork;
+	const {
+		name,
+		title,
+		tags,
+		description,
+		logo,
+		images: Image,
+		video,
+		file,
+	} = currentWork;
 	const tagString = tags.join(' | ');
 
 	return (
 		<Grid className={classes.mainContainer} container>
+
+			{!isDesktop ? (
+				<Grid
+					className={classes.logoContainer}
+					item
+					lg={4}
+					md={12}
+					sm={12}
+					xs={12}
+				>
+					{logo({ style: { width: '45vw', borderRadius: '50%' } })}
+				</Grid>
+			) : (
+				''
+			)}
 			<Grid
 				className={classes.mainTextContainer}
 				item
@@ -31,15 +56,44 @@ const WorkDetails = props => {
 					{description}
 				</Typography>
 			</Grid>
-			<Grid item lg={4} md={12} sm={12} xs={12}>
-				{logo({ style: { width: '20vw', borderRadius: '50%' } })}
-			</Grid>
-			<Grid className={classes.pdfViewer} item lg={12} md={12} sm={12} xs={12}>
-				<Typography>Below is the full Brand Bible of {name}:</Typography>
+			{isDesktop ? (
+				<Grid
+					className={classes.logoContainer}
+					item
+					lg={4}
+					md={12}
+					sm={12}
+					xs={12}
+				>
+					{logo({ style: { width: '20vw', borderRadius: '50%' } })}
+				</Grid>
+			) : (
+				''
+			)}
+			<Grid
+				className={classes.contentContainer}
+				item
+				lg={12}
+				md={12}
+				sm={12}
+				xs={12}
+			>
+				<Typography id="pdf-title" className={classes.contentTitle}>
+					Below is the full Brand Bible of {name}:
+				</Typography>
 				<PDFViewer url={file} />
 			</Grid>
-			<Grid item lg={12} md={12} sm={12} xs={12}>
-				<Typography>Below is a short video made for {name}:</Typography>
+			<Grid
+				className={classes.contentContainer}
+				item
+				lg={12}
+				md={12}
+				sm={12}
+				xs={12}
+			>
+				<Typography className={classes.contentTitle}>
+					Below is a short video made for {name}:
+				</Typography>
 				<Grid className={classes.videoPlayer} item>
 					<ReactPlayer
 						url={video}
@@ -53,9 +107,20 @@ const WorkDetails = props => {
 					/>
 				</Grid>
 			</Grid>
-			<Grid item lg={12} md={12} sm={12} xs={12}>
-				<Typography>Below is the artwork designed for {name}: </Typography>
-				<Grid className={classes.designs} item></Grid>
+			<Grid
+				className={classes.contentContainer}
+				item
+				lg={12}
+				md={12}
+				sm={12}
+				xs={12}
+			>
+				<Typography className={classes.contentTitle}>
+					Below is the artwork designed for {name}:
+				</Typography>
+				<Grid className={classes.designs} item>
+					<Image className={classes.image} />
+				</Grid>
 			</Grid>
 		</Grid>
 	);
@@ -65,39 +130,89 @@ const styles = theme => ({
 	mainContainer: {
 		marginTop: 96,
 		padding: '40px 80px',
+		[theme.breakpoints.down('md')]: {
+			alignItems: 'center',
+			justifyContent: 'center',
+		},
+		[theme.breakpoints.down('xs')]: {
+			padding: 8,
+		},
+	},
+	logoContainer: {
+		width: '100%',
+		[theme.breakpoints.down('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			textAlign: 'center',
+			alignItems: 'center',
+			justifyContent: 'center',
+		},
 	},
 	mainTextContainer: {
 		paddingRight: 40,
+		[theme.breakpoints.down('md')]: {
+			padding: 0,
+			margin: '16px 0px',
+			textAlign: 'center',
+			alignItems: 'center',
+			justifyContent: 'center',
+		},
 	},
 	titleText: {
 		fontSize: 48,
+		[theme.breakpoints.down('md')]: {
+			lineHeight: 1,
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 24,
+		},
 	},
 	tagText: {
 		fontSize: 24,
+		[theme.breakpoints.down('md')]: {
+			marginBottom: 8,
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 12,
+		},
 	},
 	descriptionText: {
 		fontSize: 16,
+		[theme.breakpoints.down('md')]: {
+			padding: '0px 80px',
+		},
+		[theme.breakpoints.down('xs')]: {
+			padding: '0px 24px',
+			fontSize: 12,
+		},
 	},
-	logoContainer: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	pdfViewer: {
-		display: 'flex',
-		flexDirection: 'column',
+	contentContainer: {
+		marginTop: 16,
 		width: '100%',
-		height: 900,
-		justifyContent: 'center',
+		[theme.breakpoints.down('md')]: {
+			display: 'flex',
+			flexDirection: 'column',
+			textAlign: 'center',
+			alignItems: 'center',
+			justifyContent: 'center',
+		},
+	},
+	contentTitle: {
+		width: '100%',
+		fontSize: 20,
+		[theme.breakpoints.down('xs')]: {
+			fontSize: 12,
+		},
 	},
 	videoPlayer: {
 		width: '100%',
 	},
 	designs: {
-		backgroundColor: 'black',
 		width: '100%',
-		height: 100,
+	},
+	image: {
+		width: '100%',
 	},
 });
 
-export default withStyles(styles)(WorkDetails);
+export default withStyles(styles)(withMediaQuery(WorkDetails));
