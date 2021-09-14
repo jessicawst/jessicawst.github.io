@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import { Element } from 'react-scroll';
+import ScrollableAnchor from 'react-scrollable-anchor';
 import workList from '../data/workList';
 import { WorkSlant, Star, LatestWorkStar, ComingSoonStar } from '../assets';
 import withMediaQuery from '../utils/withMediaQuery';
@@ -11,9 +11,10 @@ import { Button } from '@material-ui/core';
 class Work extends React.Component {
 	render() {
 		const { classes } = this.props;
+		console.log(this.props);
 
 		return (
-			<Element id="workLink">
+			<ScrollableAnchor id="work">
 				<div className={classes.mainContainer}>
 					<WorkSlant className={classes.topSlant} />
 					<Grid
@@ -51,7 +52,11 @@ class Work extends React.Component {
 										disableFocusRipple
 										disableElevation
 									>
-										{item.logo({ className: classes.workListItemLogo }) || ''}
+										<img
+											className={classes.workListItemLogo}
+											src={item.logo}
+											alt=""
+										/>
 										{item.isLatest ? (
 											<LatestWorkStar className={classes.workListItemStar} />
 										) : (
@@ -69,7 +74,7 @@ class Work extends React.Component {
 					</div>
 					<WorkSlant className={classes.bottomSlant} />
 				</div>
-			</Element>
+			</ScrollableAnchor>
 		);
 	}
 }

@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { Element } from 'react-scroll';
+import ScrollableAnchor from 'react-scrollable-anchor';
 import withMediaQuery from '../utils/withMediaQuery';
 import {
 	AboutCurve,
@@ -26,7 +26,7 @@ class About extends React.Component {
 		const { classes, isDesktop } = this.props;
 
 		return (
-			<Element id="aboutLink">
+			<ScrollableAnchor id="about">
 				<div className={classes.mainContainer}>
 					<Grid container>
 						{isDesktop ? (
@@ -174,7 +174,7 @@ class About extends React.Component {
 						</Grid>
 					</Grid>
 				</div>
-			</Element>
+			</ScrollableAnchor>
 		);
 	}
 }
@@ -182,7 +182,7 @@ class About extends React.Component {
 const styles = theme => ({
 	mainContainer: {
 		width: '100%',
-		marginTop: 96,
+		paddingTop: 96,
 	},
 	introCardContainer: {
 		[theme.breakpoints.up('lg')]: {

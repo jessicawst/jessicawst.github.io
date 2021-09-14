@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import { Element } from 'react-scroll';
+import ScrollableAnchor from 'react-scrollable-anchor';
 import {
 	ContactPhotos,
 	FBStar,
@@ -17,7 +17,7 @@ class Contact extends React.Component {
 		const { classes, isMobile } = this.props;
 
 		return (
-			<Element id="contactLink">
+			<ScrollableAnchor id="contact">
 				<div className={classes.mainContainer}>
 					<Grid
 						className={classes.contactContainer}
@@ -135,7 +135,7 @@ class Contact extends React.Component {
 						</Grid>
 					</Grid>
 				</div>
-			</Element>
+			</ScrollableAnchor>
 		);
 	}
 }

@@ -5,11 +5,9 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import withMediaQuery from './withMediaQuery';
 
 const PDFViewer = props => {
-	const { classes, url, isDesktop, isMobile } = props;
+	const { classes, url } = props;
 
-	const [componentWidth, setComponentWidth] = useState(
-		isMobile ? window.innerWidth - 16 : window.innerWidth - 160
-	);
+	const [componentWidth, setComponentWidth] = useState(window.innerWidth - 160);
 	const [numPages, setNumPages] = useState(null);
 	const [pageNumber, setPageNumber] = useState(1);
 	const [file] = useState(url);
@@ -17,24 +15,15 @@ const PDFViewer = props => {
 	const isFirstPage = pageNumber <= 1;
 	const isLastPage = pageNumber >= numPages;
 
-	let pageName = 'Page ';
-	if (!isDesktop) pageName += `${pageNumber} of ${numPages}`;
-	else if (isFirstPage) pageName += `${pageNumber + 1} of ${numPages}`;
-	else if (isLastPage) pageName += `${pageNumber} of ${numPages}`;
-	else pageName += `${pageNumber} & ${pageNumber + 1} of ${numPages}`;
-
 	useEffect(() => {
-		const setWidth = () =>
-			setComponentWidth(
-				isMobile ? window.innerWidth - 16 : window.innerWidth - 160
-			);
+		const setWidth = () => setComponentWidth(window.innerWidth - 160);
 		window.addEventListener('resize', () => setWidth());
 		return () => window.removeEventListener('resize', () => setWidth());
-	}, [isMobile, componentWidth]);
+	}, [componentWidth]);
 
 	function onDocumentLoadSuccess({ numPages }) {
 		setNumPages(numPages);
-		isDesktop ? setPageNumber(0) : setPageNumber(1);
+		setPageNumber(1);
 	}
 
 	function changePage(offset) {
@@ -42,28 +31,15 @@ const PDFViewer = props => {
 	}
 
 	function previousPage() {
-		isDesktop ? changePage(-2) : changePage(-1);
+		changePage(-1);
 	}
 
 	function nextPage() {
-		isDesktop ? changePage(2) : changePage(1);
+		changePage(1);
 	}
 
 	return (
 		<div className={classes.mainContainer}>
-			<Document
-				className={classes.document}
-				file={file}
-				onLoadSuccess={onDocumentLoadSuccess}
-			>
-				{renderPages({
-					width: isDesktop ? componentWidth / 2 : componentWidth,
-					pageNumber,
-					isFirstPage,
-					isLastPage,
-					isDesktop,
-				})}
-			</Document>
 			<Grid className={classes.buttonGroup}>
 				<Button
 					className={classes.button}
@@ -76,7 +52,9 @@ const PDFViewer = props => {
 				>
 					<Typography className={classes.buttonText}>Prev</Typography>
 				</Button>
-				<Typography className={classes.pageNumText}>{pageName}</Typography>
+				<Typography
+					className={classes.pageNumText}
+				>{`Page ${pageNumber} of ${numPages}`}</Typography>
 				<Button
 					className={classes.button}
 					variant="contained"
@@ -89,30 +67,14 @@ const PDFViewer = props => {
 					<Typography className={classes.buttonText}>Next</Typography>
 				</Button>
 			</Grid>
+			<Document
+				className={classes.document}
+				file={file}
+				onLoadSuccess={onDocumentLoadSuccess}
+			>
+				<Page width={componentWidth} noData="" pageNumber={pageNumber} />
+			</Document>
 		</div>
-	);
-};
-
-const renderPages = props => {
-	const { width, pageNumber, isFirstPage, isLastPage, isDesktop } = props;
-
-	const currentPage = isFirstPage ? pageNumber + 1 : pageNumber;
-
-	return (
-		<React.Fragment>
-			{isDesktop ? (
-				isFirstPage || isLastPage ? (
-					<Page width={width} noData="" pageNumber={currentPage} />
-				) : (
-					<React.Fragment>
-						<Page width={width} noData="" pageNumber={currentPage} />
-						<Page width={width} noData="" pageNumber={currentPage + 1} />
-					</React.Fragment>
-				)
-			) : (
-				<Page width={width} noData="" pageNumber={pageNumber} />
-			)}
-		</React.Fragment>
 	);
 };
 
@@ -132,7 +94,7 @@ const styles = theme => ({
 		alignItems: 'center',
 	},
 	buttonGroup: {
-		marginTop: 16,
+		margin: 16,
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'center',

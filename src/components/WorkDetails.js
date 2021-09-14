@@ -8,27 +8,35 @@ import PDFViewer from '../utils/PDFViewer';
 import withMediaQuery from '../utils/withMediaQuery';
 
 const WorkDetails = props => {
-	const { classes, match, isDesktop, isMobile } = props;
+	const { classes, match, isDesktop, setTopBarValue } = props;
+	setTopBarValue(1);
 
 	const currentWork = workList.find(item => item.link === match.params.id);
 	if (!currentWork) return <Redirect to="/" />;
 
 	const {
+		isComingSoon,
 		name,
 		title,
 		tags,
 		description,
 		logo,
-		images: Image,
+		images,
 		video,
-		file,
+		pdf,
 	} = currentWork;
 	const tagString = tags.join(' | ');
 
+	if (isComingSoon)
+		return (
+			<Grid className={classes.comingSoonContainer} container>
+				<Typography>{`${name} is still in the works! Please enjoy the other parts of my content first!`}</Typography>
+			</Grid>
+		);
+
 	return (
 		<Grid className={classes.mainContainer} container>
-
-			{!isDesktop ? (
+			{!isDesktop && (
 				<Grid
 					className={classes.logoContainer}
 					item
@@ -37,10 +45,8 @@ const WorkDetails = props => {
 					sm={12}
 					xs={12}
 				>
-					{logo({ style: { width: '45vw', borderRadius: '50%' } })}
+					<img className={classes.logo} src={logo} alt="" />
 				</Grid>
-			) : (
-				''
 			)}
 			<Grid
 				className={classes.mainTextContainer}
@@ -56,7 +62,7 @@ const WorkDetails = props => {
 					{description}
 				</Typography>
 			</Grid>
-			{isDesktop ? (
+			{isDesktop && (
 				<Grid
 					className={classes.logoContainer}
 					item
@@ -65,68 +71,79 @@ const WorkDetails = props => {
 					sm={12}
 					xs={12}
 				>
-					{logo({ style: { width: '20vw', borderRadius: '50%' } })}
+					<img className={classes.logo} src={logo} alt="" />
 				</Grid>
-			) : (
-				''
 			)}
-			<Grid
-				className={classes.contentContainer}
-				item
-				lg={12}
-				md={12}
-				sm={12}
-				xs={12}
-			>
-				<Typography id="pdf-title" className={classes.contentTitle}>
-					Below is the full Brand Bible of {name}:
-				</Typography>
-				<PDFViewer url={file} />
-			</Grid>
-			<Grid
-				className={classes.contentContainer}
-				item
-				lg={12}
-				md={12}
-				sm={12}
-				xs={12}
-			>
-				<Typography className={classes.contentTitle}>
-					Below is a short video made for {name}:
-				</Typography>
-				<Grid className={classes.videoPlayer} item>
-					<ReactPlayer
-						url={video}
-						volume={0}
-						width="100%"
-						height="auto"
-						controls
-						playing
-						muted
-						loop
-					/>
+			{pdf && (
+				<Grid
+					className={classes.contentContainer}
+					item
+					lg={12}
+					md={12}
+					sm={12}
+					xs={12}
+				>
+					<Typography id="pdf-title" className={classes.contentTitle}>
+						Below is the full Brand Bible of {name}:
+					</Typography>
+					<PDFViewer url={`pdfs/${pdf}`} />
 				</Grid>
-			</Grid>
-			<Grid
-				className={classes.contentContainer}
-				item
-				lg={12}
-				md={12}
-				sm={12}
-				xs={12}
-			>
-				<Typography className={classes.contentTitle}>
-					Below is the artwork designed for {name}:
-				</Typography>
-				<Grid className={classes.designs} item>
-					<Image className={classes.image} />
+			)}
+			{video && (
+				<Grid
+					className={classes.contentContainer}
+					item
+					lg={12}
+					md={12}
+					sm={12}
+					xs={12}
+				>
+					<Typography className={classes.contentTitle}>
+						Below is a short video made for {name}:
+					</Typography>
+					<Grid className={classes.videoPlayer} item>
+						<ReactPlayer
+							url={`videos/${video}`}
+							volume={0}
+							width="100%"
+							height="auto"
+							controls
+							playing
+							muted
+							loop
+						/>
+					</Grid>
 				</Grid>
-			</Grid>
+			)}
+			{images.length > 0 && (
+				<Grid
+					className={classes.contentContainer}
+					item
+					lg={12}
+					md={12}
+					sm={12}
+					xs={12}
+				>
+					<Typography className={classes.contentTitle}>
+						Below is the artwork designed for {name}:
+					</Typography>
+					<Grid className={classes.designs} item>
+						{images.map(image => (
+							<img className={classes.image} src={image} alt="" />
+						))}
+					</Grid>
+				</Grid>
+			)}
 		</Grid>
 	);
 };
 
 const styles = theme => ({
+	comingSoonContainer: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: '100vh',
+	},
 	mainContainer: {
 		marginTop: 96,
 		padding: '40px 80px',
@@ -140,12 +157,17 @@ const styles = theme => ({
 	},
 	logoContainer: {
 		width: '100%',
+		display: 'flex',
+		flexDirection: 'column',
+		textAlign: 'center',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	logo: {
+		borderRadius: '50%',
+		width: '20vw',
 		[theme.breakpoints.down('md')]: {
-			display: 'flex',
-			flexDirection: 'column',
-			textAlign: 'center',
-			alignItems: 'center',
-			justifyContent: 'center',
+			width: '45vw',
 		},
 	},
 	mainTextContainer: {
@@ -177,6 +199,7 @@ const styles = theme => ({
 		},
 	},
 	descriptionText: {
+		display: 'inline-block',
 		fontSize: 16,
 		[theme.breakpoints.down('md')]: {
 			padding: '0px 80px',

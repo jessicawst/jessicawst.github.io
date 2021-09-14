@@ -3,19 +3,9 @@ import About from './About';
 import Work from './Work';
 import Contact from './Contact';
 
-const Home = props => {
-	const handleScroll = e => {
-		console.log(e);
-		const bottom =
-			e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
-		if (bottom) {
-			console.log('Bottom');
-			props.setTopBarValue(2);
-		}
-	};
-
+const Home = () => {
 	return (
-		<div onScroll={handleScroll}>
+		<div>
 			<About />
 			<Work />
 			<Contact />

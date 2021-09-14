@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Link } from 'react-scroll';
 import { ShuLogo } from '../assets';
 import {
 	SwipeableDrawer,
@@ -12,10 +11,14 @@ import {
 	ListItem,
 	Typography,
 	IconButton,
+	ButtonBase,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import withMediaQuery from '../utils/withMediaQuery';
 import { useHistory } from 'react-router-dom';
+import { goToAnchor } from 'react-scrollable-anchor';
+
+const navigateToAnchor = id => goToAnchor(id, true);
 
 const StyledTabs = withStyles(theme => ({
 	flexContainer: {
@@ -35,55 +38,24 @@ const StyledTabs = withStyles(theme => ({
 	},
 }))(props => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
-const TabLabel = props => (
-	<Link
-		to={props.to}
-		offset={props.offset}
-		onClick={props.onClick}
-		onSetActive={props.onClick}
-		duration={1000}
-		spy
-		smooth
-		ignoreCancelEvents
-	>
-		<Typography style={{ fontSize: 20, height: '100%', margin: '0px 20px' }}>
-			{props.label}
-		</Typography>
-	</Link>
-);
-
 const SwipeableDrawerList = props => (
 	<List style={{ width: '100%' }}>
 		<ListItem style={{ justifyContent: 'center' }}>
-			<Link
-				to="aboutLink"
-				offset={-96}
-				duration={1000}
-				onClick={() => props.closeSwipeableDrawer()}
-			>
+			<ButtonBase onClick={() => navigateToAnchor('about')}>
 				<Typography style={{ fontSize: 20 }}>ABOUT ME</Typography>
-			</Link>
+			</ButtonBase>
 		</ListItem>
 		<Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
 		<ListItem style={{ justifyContent: 'center' }}>
-			<Link
-				to="workLink"
-				duration={1000}
-				onClick={() => props.closeSwipeableDrawer()}
-			>
+			<ButtonBase onClick={() => navigateToAnchor('work')}>
 				<Typography style={{ fontSize: 20 }}>MY WORK</Typography>
-			</Link>
+			</ButtonBase>
 		</ListItem>
 		<Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
 		<ListItem style={{ justifyContent: 'center' }}>
-			<Link
-				to="contactLink"
-				offset={-56}
-				duration={1000}
-				onClick={() => props.closeSwipeableDrawer()}
-			>
+			<ButtonBase onClick={() => navigateToAnchor('contact')}>
 				<Typography style={{ fontSize: 20 }}>CONTACT ME</Typography>
-			</Link>
+			</ButtonBase>
 		</ListItem>
 	</List>
 );
@@ -107,41 +79,42 @@ const DesktopBar = props => {
 			>
 				<Tab
 					label={
-						<TabLabel
-							to="aboutLink"
-							label="ABOUT ME"
-							offset={-96}
-							onClick={() => {
-								history.push('/');
-								setValue(0);
-							}}
-						/>
+						<Typography
+							style={{ fontSize: 20, height: '100%', margin: '0px 20px' }}
+						>
+							ABOUT ME
+						</Typography>
 					}
+					onClick={() => {
+						history.push('/');
+						navigateToAnchor('about');
+					}}
 				/>
 				<Tab
 					label={
-						<TabLabel
-							to="workLink"
-							label="MY WORK"
-							onClick={() => {
-								history.push('/');
-								setValue(1);
-							}}
-						/>
+						<Typography
+							style={{ fontSize: 20, height: '100%', margin: '0px 20px' }}
+						>
+							MY WORK
+						</Typography>
 					}
+					onClick={() => {
+						history.push('/');
+						navigateToAnchor('work');
+					}}
 				/>
 				<Tab
 					label={
-						<TabLabel
-							to="contactLink"
-							label="CONTACT ME"
-							offset={-56}
-							onClick={() => {
-								history.push('/');
-								setValue(2);
-							}}
-						/>
+						<Typography
+							style={{ fontSize: 20, height: '100%', margin: '0px 20px' }}
+						>
+							CONTACT ME
+						</Typography>
 					}
+					onClick={() => {
+						history.push('/');
+						navigateToAnchor('contact');
+					}}
 				/>
 			</StyledTabs>
 		</AppBar>

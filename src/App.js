@@ -9,6 +9,7 @@ import ProximaSoftMedium from './fonts/ProximaSoft-Medium.woff2';
 import TopBar from './components/TopBar';
 import Home from './components/Home';
 import WorkDetails from './components/WorkDetails';
+import { configureAnchors } from 'react-scrollable-anchor';
 
 const proximaSoftRegular = {
 	fontFamily: 'ProximaSoft-Regular',
@@ -110,16 +111,28 @@ const theme = createTheme({
 function App() {
 	const [topBarValue, setTopBarValue] = React.useState(0);
 
+	configureAnchors({
+		offset: 0,
+		scrollDuration: 600,
+	});
+
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<BrowserRouter>
 				<TopBar value={topBarValue} setValue={setTopBarValue} />
 				<Switch>
-					<Route path="/:id" component={WorkDetails} />
+					<Route
+						path="/:id"
+						render={routeProps => (
+							<WorkDetails {...routeProps} setTopBarValue={setTopBarValue} />
+						)}
+					/>
 					<Route
 						path="/"
-						render={() => <Home setTopBarValue={setTopBarValue} />}
+						render={routeProps => (
+							<Home {...routeProps} setTopBarValue={setTopBarValue} />
+						)}
 					/>
 				</Switch>
 			</BrowserRouter>
