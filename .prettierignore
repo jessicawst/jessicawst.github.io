@@ -1,6 +1,7 @@
 # Ignore artifacts:
 build
 coverage
+pfolio
 
 # Ignore all HTML files:
 *.html

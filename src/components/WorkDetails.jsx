@@ -63,9 +63,9 @@ const WorkDetails = (props) => {
               volume={0}
               width="100%"
               height="auto"
+              muted="false"
               controls
               playing
-              muted
               loop
             />
           </Grid>
