@@ -4,13 +4,13 @@ import Work from './Work';
 import Contact from './Contact';
 
 const Home = () => {
-	return (
-		<div>
-			<About />
-			<Work />
-			<Contact />
-		</div>
-	);
+  return (
+    <div>
+      <About />
+      <Work />
+      <Contact />
+    </div>
+  );
 };
 
 export default Home;
