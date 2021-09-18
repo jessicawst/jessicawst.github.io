@@ -39,19 +39,37 @@ const StyledTabs = withStyles((theme) => ({
 const SwipeableDrawerList = (props) => (
   <List style={{ width: '100%' }}>
     <ListItem style={{ justifyContent: 'center' }}>
-      <ButtonBase onClick={() => navigateToAnchor('about')}>
+      <ButtonBase
+        onClick={() => {
+          props.closeSwipeableDrawer();
+          props.history.push('/');
+          navigateToAnchor('about');
+        }}
+      >
         <Typography style={{ fontSize: 20 }}>ABOUT ME</Typography>
       </ButtonBase>
     </ListItem>
     <Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
     <ListItem style={{ justifyContent: 'center' }}>
-      <ButtonBase onClick={() => navigateToAnchor('work')}>
+      <ButtonBase
+        onClick={() => {
+          props.closeSwipeableDrawer();
+          props.history.push('/');
+          navigateToAnchor('work');
+        }}
+      >
         <Typography style={{ fontSize: 20 }}>MY WORK</Typography>
       </ButtonBase>
     </ListItem>
     <Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
     <ListItem style={{ justifyContent: 'center' }}>
-      <ButtonBase onClick={() => navigateToAnchor('contact')}>
+      <ButtonBase
+        onClick={() => {
+          props.closeSwipeableDrawer();
+          props.history.push('/');
+          navigateToAnchor('contact');
+        }}
+      >
         <Typography style={{ fontSize: 20 }}>CONTACT ME</Typography>
       </ButtonBase>
     </ListItem>
@@ -133,6 +151,7 @@ const DesktopBar = (props) => {
 
 const MobileBar = (props) => {
   const { classes } = props;
+  const history = useHistory();
   const [isOpen, setIsOpen] = React.useState(false);
 
   const openSwipeableDrawer = () => {
@@ -160,7 +179,10 @@ const MobileBar = (props) => {
         onOpen={openSwipeableDrawer}
         onClose={closeSwipeableDrawer}
       >
-        <SwipeableDrawerList closeSwipeableDrawer={() => closeSwipeableDrawer()} />
+        <SwipeableDrawerList
+          history={history}
+          closeSwipeableDrawer={() => closeSwipeableDrawer()}
+        />
       </SwipeableDrawer>
     </AppBar>
   );
