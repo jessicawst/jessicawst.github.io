@@ -22,7 +22,7 @@ import joochiatoverall from './joochiat/joochiatoverall.png';
 import imagination from './imagination/imagination.png';
 import imaginationoverall from './imagination/imaginationoverall.jpg';
 import istorybook from './istorybook/istorybook.png';
-import istorybookoverall from './istorybook/istorybookoverall.png';
+import istorybookoverall from './istorybook/istorybookoverall.jpg';
 import nurse from './nurse/nurse.png';
 import lifeofkid from './lifeofkid/lifeofkid.png';
 
