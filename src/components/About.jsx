@@ -168,7 +168,6 @@ class About extends React.Component {
 const styles = (theme) => ({
   mainContainer: {
     width: '100%',
-    paddingTop: 96,
   },
   introCardContainer: {
     [theme.breakpoints.up('lg')]: {

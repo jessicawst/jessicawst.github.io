@@ -8,6 +8,7 @@ import Home from './components/Home';
 import WorkDetails from './components/WorkDetails';
 import ProximaSoftBold from './fonts/ProximaSoft-Bold.woff2';
 import ProximaSoftMedium from './fonts/ProximaSoft-Medium.woff2';
+import "./App.css";
 
 const proximaSoftBold = {
   fontFamily: 'ProximaSoft-Bold',

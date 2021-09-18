@@ -5,11 +5,13 @@ import Contact from './Contact';
 
 const Home = () => {
   return (
-    <div>
+    <div style={{
+      position: 'absolute', top: 96, "overflow-y": 'scroll', height: window.innerHeight - 96
+    }}>
       <About />
       <Work />
       <Contact />
-    </div>
+    </div >
   );
 };
 

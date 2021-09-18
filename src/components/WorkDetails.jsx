@@ -91,11 +91,12 @@ const styles = (theme) => ({
   comingSoonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100vh',
   },
   mainContainer: {
     marginTop: 96,
     padding: '40px 80px',
+    height: window.innerHeight - 96,
+    "overflow-y": 'scroll',
     [theme.breakpoints.down('md')]: {
       alignItems: 'center',
       justifyContent: 'center',
