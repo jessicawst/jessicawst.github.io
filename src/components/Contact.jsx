@@ -47,9 +47,9 @@ class Contact extends React.Component {
                 </Typography>
                 <Typography className={classes.contactContent} variant="body2">
                   On Web
-                  <a className={classes.contactLinkContainer} href="http://jessicawst.com/pfolio/">
+                  <a className={classes.contactLinkContainer} href="https://jessicawst.github.io/">
                     <Typography className={classes.contactLinks} variant="body2">
-                      jessicawst.com/pfolio
+                      jessicawst.github.io
                     </Typography>
                   </a>
                 </Typography>
@@ -220,7 +220,6 @@ const styles = (theme) => ({
     position: 'absolute',
     width: 320,
     alignSelf: 'flex-end',
-    // transform: 'translate(80px, 320px)',
     opacity: 0.1,
     margin: '320px 0px 0px 80px',
     [theme.breakpoints.down('md')]: {

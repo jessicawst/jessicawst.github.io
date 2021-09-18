@@ -44,14 +44,15 @@ const WorkDetails = (props) => {
           <img className={classes.logo} src={logo} alt="" />
         </Grid>
       )}
-      {pdf && (
-        <Grid className={classes.contentContainer} item lg={12} md={12} sm={12} xs={12}>
-          <Typography id="pdf-title" className={classes.contentTitle}>
-            Below is a PDF sample of {name}:
-          </Typography>
-          <PDFViewer url={`pdfs/${pdf}`} />
-        </Grid>
-      )}
+      {false ||
+        (pdf && (
+          <Grid className={classes.contentContainer} item lg={12} md={12} sm={12} xs={12}>
+            <Typography id="pdf-title" className={classes.contentTitle}>
+              Below is a PDF sample of {name}:
+            </Typography>
+            <PDFViewer url={`pdfs/${pdf}`} />
+          </Grid>
+        ))}
       {video && (
         <Grid className={classes.contentContainer} item lg={12} md={12} sm={12} xs={12}>
           <Typography className={classes.contentTitle}>
