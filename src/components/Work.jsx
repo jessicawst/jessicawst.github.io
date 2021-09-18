@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ScrollableAnchor from 'react-scrollable-anchor';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -43,7 +44,8 @@ class Work extends React.Component {
                 <Grid item lg={4} md={6} sm={6} xs={12}>
                   <Button
                     className={classes.workListItem}
-                    href={`${item.link}`}
+                    to={`${item.link}`}
+                    component={Link}
                     disableRipple
                     disableTouchRipple
                     disableFocusRipple
