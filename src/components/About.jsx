@@ -274,7 +274,8 @@ const styles = (theme) => ({
       width: 208,
     },
     [theme.breakpoints.down('xs')]: {
-      width: '35%',
+      width: 'auto',
+      paddingRight: 16,
       marginRight: 8,
     },
   },

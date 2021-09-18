@@ -8,7 +8,7 @@ import Home from './components/Home';
 import WorkDetails from './components/WorkDetails';
 import ProximaSoftBold from './fonts/ProximaSoft-Bold.woff2';
 import ProximaSoftMedium from './fonts/ProximaSoft-Medium.woff2';
-import "./App.css";
+import './App.css';
 
 const proximaSoftBold = {
   fontFamily: 'ProximaSoft-Bold',
@@ -70,7 +70,7 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 321, // Mobile
+      sm: 451, // Mobile
       md: 769, // Tablet
       lg: 1201, // Web
       xl: 1920,

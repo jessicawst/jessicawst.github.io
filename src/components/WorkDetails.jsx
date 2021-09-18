@@ -96,7 +96,7 @@ const styles = (theme) => ({
     marginTop: 96,
     padding: '40px 80px',
     height: window.innerHeight - 96,
-    "overflow-y": 'scroll',
+    overflowY: 'scroll',
     [theme.breakpoints.down('md')]: {
       alignItems: 'center',
       justifyContent: 'center',
