@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { configureAnchors } from 'react-scrollable-anchor';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -89,7 +89,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
+      <HashRouter>
         <TopBar value={topBarValue} setValue={setTopBarValue} />
         <Switch>
           <Route
@@ -101,7 +101,7 @@ function App() {
             render={(routeProps) => <Home {...routeProps} setTopBarValue={setTopBarValue} />}
           />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }
