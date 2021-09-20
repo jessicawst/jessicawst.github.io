@@ -35,7 +35,7 @@ class About extends React.Component {
                 <HeartWithDashes className={classes.introCardHeart} />
                 <Grid className={classes.introCardTextContainer}>
                   <Typography className={classes.introCardTopText}>
-                    I'm <Logo className={classes.introCardLogo} /> -
+                    I&apos;m <Logo className={classes.introCardLogo} /> -
                   </Typography>
                   <Typography className={classes.introCardBottomText}>
                     UI/UX + Graphic Designer
@@ -91,7 +91,7 @@ class About extends React.Component {
               >
                 <Grid className={classes.introCardTextContainer}>
                   <Typography className={classes.introCardTopText}>
-                    I'm <Logo className={classes.introCardLogo} /> -
+                    I&apos;m <Logo className={classes.introCardLogo} /> -
                   </Typography>
                   <Typography className={classes.introCardBottomText}>
                     UI/UX + Graphic Designer

@@ -63,7 +63,7 @@ const WorkDetails = (props) => {
               volume={0}
               width="100%"
               height="auto"
-              muted="false"
+              muted={false}
               controls
               playing
               loop
@@ -77,8 +77,8 @@ const WorkDetails = (props) => {
             Below is the artwork designed for {name}:
           </Typography>
           <Grid className={classes.designs} item>
-            {images.map((image) => (
-              <img className={classes.image} src={image} alt="" />
+            {images.map((image, index) => (
+              <img key={index} className={classes.image} src={image} alt="" />
             ))}
           </Grid>
         </Grid>

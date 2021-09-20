@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 

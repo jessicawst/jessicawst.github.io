@@ -1,3 +1,4 @@
+import React from 'react';
 import shuLogo from './shuLogo.png';
 import aboutCurve from './aboutCurve.svg';
 import zigZag from './zigZag.svg';

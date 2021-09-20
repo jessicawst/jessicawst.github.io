@@ -1,6 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { goToAnchor } from 'react-scrollable-anchor';
+import { Link, useHistory } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -15,8 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import withMediaQuery from '../utils/withMediaQuery';
 import { ShuLogo } from '../assets';
-
-const navigateToAnchor = (id) => goToAnchor(id, true);
 
 const StyledTabs = withStyles((theme) => ({
   flexContainer: {
@@ -43,7 +40,7 @@ const SwipeableDrawerList = (props) => (
         onClick={() => {
           props.closeSwipeableDrawer();
           props.history.push('/');
-          navigateToAnchor('about');
+          // navigateToAnchor('about');
         }}
       >
         <Typography style={{ fontSize: 20 }}>ABOUT ME</Typography>
@@ -55,7 +52,7 @@ const SwipeableDrawerList = (props) => (
         onClick={() => {
           props.closeSwipeableDrawer();
           props.history.push('/');
-          navigateToAnchor('work');
+          // navigateToAnchor('work');
         }}
       >
         <Typography style={{ fontSize: 20 }}>MY WORK</Typography>
@@ -67,7 +64,7 @@ const SwipeableDrawerList = (props) => (
         onClick={() => {
           props.closeSwipeableDrawer();
           props.history.push('/');
-          navigateToAnchor('contact');
+          // navigateToAnchor('contact');
         }}
       >
         <Typography style={{ fontSize: 20 }}>CONTACT ME</Typography>
@@ -86,7 +83,9 @@ const DesktopBar = (props) => {
 
   return (
     <AppBar className={classes.mainContainer} position="fixed">
-      <ShuLogo className={classes.mainLogo} />
+      <Link to="/">
+        <ShuLogo className={classes.mainLogo} />
+      </Link>
       <StyledTabs
         className={classes.tabContainer}
         value={value}
@@ -107,7 +106,7 @@ const DesktopBar = (props) => {
           }
           onClick={() => {
             history.push('/');
-            navigateToAnchor('about');
+            // navigateToAnchor('about');
           }}
         />
         <Tab
@@ -124,7 +123,7 @@ const DesktopBar = (props) => {
           }
           onClick={() => {
             history.push('/');
-            navigateToAnchor('work');
+            // navigateToAnchor('work');
           }}
         />
         <Tab
@@ -141,7 +140,7 @@ const DesktopBar = (props) => {
           }
           onClick={() => {
             history.push('/');
-            navigateToAnchor('contact');
+            // navigateToAnchor('contact');
           }}
         />
       </StyledTabs>
@@ -168,7 +167,9 @@ const MobileBar = (props) => {
       style={{ justifyContent: 'space-between' }}
       position="fixed"
     >
-      <ShuLogo className={classes.mainLogo} />
+      <Link to="/">
+        <ShuLogo className={classes.mainLogo} />
+      </Link>
       <IconButton onClick={openSwipeableDrawer}>
         <MenuIcon className={classes.drawerIcon} />
       </IconButton>
