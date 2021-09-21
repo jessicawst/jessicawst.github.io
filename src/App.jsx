@@ -1,6 +1,6 @@
 import React from 'react';
+import { pdfjs } from 'react-pdf';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import { configureAnchors } from 'react-scrollable-anchor';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import TopBar from './components/TopBar';
@@ -81,10 +81,7 @@ const theme = createTheme({
 function App() {
   const [topBarValue, setTopBarValue] = React.useState(0);
 
-  configureAnchors({
-    offset: 0,
-    scrollDuration: 600,
-  });
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
   return (
     <ThemeProvider theme={theme}>

@@ -44,7 +44,7 @@ const WorkDetails = (props) => {
           <img className={classes.logo} src={logo} alt="" />
         </Grid>
       )}
-      {false && pdf && (
+      {pdf && (
         <Grid className={classes.contentContainer} item lg={12} md={12} sm={12} xs={12}>
           <Typography id="pdf-title" className={classes.contentTitle}>
             Below is a PDF sample of {name}:

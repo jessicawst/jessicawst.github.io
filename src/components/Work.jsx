@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ScrollableAnchor from 'react-scrollable-anchor';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -14,7 +13,7 @@ class Work extends React.Component {
     const { classes } = this.props;
 
     return (
-      <ScrollableAnchor id="work">
+      <div id="work">
         <div className={classes.mainContainer}>
           <WorkSlant className={classes.topSlant} />
           <Grid
@@ -65,7 +64,7 @@ class Work extends React.Component {
           </div>
           <WorkSlant className={classes.bottomSlant} />
         </div>
-      </ScrollableAnchor>
+      </div>
     );
   }
 }

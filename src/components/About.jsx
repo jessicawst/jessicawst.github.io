@@ -1,5 +1,4 @@
 import React from 'react';
-import ScrollableAnchor from 'react-scrollable-anchor';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -19,7 +18,7 @@ class About extends React.Component {
     const { classes, isDesktop } = this.props;
 
     return (
-      <ScrollableAnchor id="about">
+      <div id="about">
         <div className={classes.mainContainer}>
           <Grid container>
             {isDesktop ? (
@@ -160,7 +159,7 @@ class About extends React.Component {
             </Grid>
           </Grid>
         </div>
-      </ScrollableAnchor>
+      </div>
     );
   }
 }

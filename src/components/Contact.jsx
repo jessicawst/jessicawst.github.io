@@ -1,5 +1,4 @@
 import React from 'react';
-import ScrollableAnchor from 'react-scrollable-anchor';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,7 +10,7 @@ class Contact extends React.Component {
     const { classes, isMobile } = this.props;
 
     return (
-      <ScrollableAnchor id="contact">
+      <div id="contact">
         <div className={classes.mainContainer}>
           <Grid className={classes.contactContainer} container lg={12} md={12} sm={12}>
             <Grid className={classes.photoContainer} item lg={6} md={12} sm={12}>
@@ -91,7 +90,7 @@ class Contact extends React.Component {
             </Grid>
           </Grid>
         </div>
-      </ScrollableAnchor>
+      </div>
     );
   }
 }
