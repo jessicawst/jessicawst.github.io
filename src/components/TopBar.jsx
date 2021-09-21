@@ -40,7 +40,11 @@ const SwipeableDrawerList = (props) => (
         onClick={() => {
           props.closeSwipeableDrawer();
           props.history.push('/');
-          // navigateToAnchor('about');
+          document.getElementById('about').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+          });
         }}
       >
         <Typography style={{ fontSize: 20 }}>ABOUT ME</Typography>
@@ -52,7 +56,11 @@ const SwipeableDrawerList = (props) => (
         onClick={() => {
           props.closeSwipeableDrawer();
           props.history.push('/');
-          // navigateToAnchor('work');
+          document.getElementById('work').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+          });
         }}
       >
         <Typography style={{ fontSize: 20 }}>MY WORK</Typography>
@@ -64,7 +72,11 @@ const SwipeableDrawerList = (props) => (
         onClick={() => {
           props.closeSwipeableDrawer();
           props.history.push('/');
-          // navigateToAnchor('contact');
+          document.getElementById('contact').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+          });
         }}
       >
         <Typography style={{ fontSize: 20 }}>CONTACT ME</Typography>
@@ -106,7 +118,11 @@ const DesktopBar = (props) => {
           }
           onClick={() => {
             history.push('/');
-            // navigateToAnchor('about');
+            document.getElementById('about').scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+              inline: 'nearest',
+            });
           }}
         />
         <Tab
@@ -123,7 +139,11 @@ const DesktopBar = (props) => {
           }
           onClick={() => {
             history.push('/');
-            // navigateToAnchor('work');
+            document.getElementById('work').scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+              inline: 'nearest',
+            });
           }}
         />
         <Tab
@@ -140,7 +160,11 @@ const DesktopBar = (props) => {
           }
           onClick={() => {
             history.push('/');
-            // navigateToAnchor('contact');
+            document.getElementById('contact').scrollIntoView({
+              behavior: 'smooth',
+              block: 'end',
+              inline: 'nearest',
+            });
           }}
         />
       </StyledTabs>
