@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import withMediaQuery from '../utils/withMediaQuery';
-import { AboutCurve, ZigZag, HeartWithDashes, Logo, SelfPortrait, ResumePhoto } from '../assets';
+import { AboutCurve, ZigZag, HeartWithDashes, Logo, ResumePhoto } from '../assets';
 
 class About extends React.Component {
   downloadResume() {
@@ -21,46 +21,31 @@ class About extends React.Component {
       <div id="about">
         <div className={classes.mainContainer}>
           <Grid container>
-            {isDesktop ? (
-              <Grid
-                className={classes.introCardContainer}
-                container
-                item
-                lg={6}
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <HeartWithDashes className={classes.introCardHeart} />
-                <Grid className={classes.introCardTextContainer}>
-                  <Typography className={classes.introCardTopText}>
-                    I&apos;m <Logo className={classes.introCardLogo} /> -
-                  </Typography>
-                  <Typography className={classes.introCardBottomText}>
-                    UI/UX + Graphic Designer
-                  </Typography>
-                </Grid>
-              </Grid>
-            ) : (
-              ''
-            )}
             <Grid
-              className={classes.selfPortraitContainer}
+              className={classes.introCardContainer}
               container
               item
-              lg={6}
+              lg={12}
               md={12}
               sm={12}
               xs={12}
+              direction="column"
               justifyContent="center"
               alignItems="center"
             >
-              <SelfPortrait className={classes.selfPortrait} />
+              <HeartWithDashes className={classes.introCardHeart} />
+              <Grid className={classes.introCardTextContainer}>
+                <Typography className={classes.introCardTopText}>
+                  I&apos;m <Logo className={classes.introCardLogo} /> -
+                </Typography>
+                <Typography className={classes.introCardBottomText}>
+                  UI/UX + Graphic Designer
+                </Typography>
+              </Grid>
             </Grid>
             <Grid item lg={12} md={12} sm={12} xs={12}>
               <AboutCurve className={classes.aboutCurve} />
             </Grid>
-
             {isDesktop ? (
               <Grid
                 className={classes.resumePhotoContainer}
@@ -71,31 +56,6 @@ class About extends React.Component {
                 alignItems="center"
               >
                 <ResumePhoto className={classes.resumePhoto} />
-              </Grid>
-            ) : (
-              ''
-            )}
-            {!isDesktop ? (
-              <Grid
-                className={classes.introCardContainer}
-                container
-                item
-                lg={6}
-                md={12}
-                sm={12}
-                xs={12}
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Grid className={classes.introCardTextContainer}>
-                  <Typography className={classes.introCardTopText}>
-                    I&apos;m <Logo className={classes.introCardLogo} /> -
-                  </Typography>
-                  <Typography className={classes.introCardBottomText}>
-                    UI/UX + Graphic Designer
-                  </Typography>
-                </Grid>
               </Grid>
             ) : (
               ''
@@ -169,28 +129,15 @@ const styles = (theme) => ({
     width: '100%',
   },
   introCardContainer: {
-    [theme.breakpoints.up('lg')]: {
-      backgroundColor: theme.palette.primary.main,
-    },
+    backgroundColor: theme.palette.primary.main,
   },
   introCardHeart: {
-    width: '60vw',
+    width: '100%',
     zIndex: 1,
   },
   introCardTextContainer: {
     zIndex: 2,
-    [theme.breakpoints.down('md')]: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      marginBottom: 40,
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginBottom: 20,
-    },
-    [theme.breakpoints.up('lg')]: {
-      position: 'absolute',
-    },
+    position: 'absolute',
   },
   introCardTopText: {
     display: 'flex',
@@ -220,30 +167,15 @@ const styles = (theme) => ({
     },
   },
   introCardBottomText: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: theme.palette.accent.main,
     padding: '8px 28px',
     fontSize: 26,
     [theme.breakpoints.down('xs')]: {
       fontSize: 12,
       padding: '4px 16px',
-    },
-  },
-  selfPortraitContainer: {
-    backgroundColor: theme.palette.primary.main,
-  },
-  selfPortrait: {
-    width: '80%',
-    marginBottom: -64,
-    zIndex: 10,
-    [theme.breakpoints.between('md', 'sm')]: {
-      width: '60%',
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: -48,
-    },
-    [theme.breakpoints.down('xs')]: {
-      width: '65%',
-      marginBottom: -24,
     },
   },
   aboutCurve: {
@@ -257,6 +189,9 @@ const styles = (theme) => ({
     width: '100%',
   },
   resumeContainer: {
+    [theme.breakpoints.down('md')]: {
+      marginTop: 32,
+    },
     [theme.breakpoints.up('lg')]: {
       paddingRight: 100,
     },

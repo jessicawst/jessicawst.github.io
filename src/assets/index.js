@@ -4,7 +4,6 @@ import aboutCurve from './aboutCurve.svg';
 import zigZag from './zigZag.svg';
 import heartWithDashes from './heartWithDashes.svg';
 import logo from './logo.svg';
-import selfPortrait from './selfPortrait.png';
 import resumePhoto from './resumePhoto.png';
 import workSlant from './workSlant.svg';
 import star from './star.svg';
@@ -25,8 +24,6 @@ const ZigZag = (props) => <img {...props} src={zigZag} alt="" />;
 const HeartWithDashes = (props) => <img {...props} src={heartWithDashes} alt="" />;
 
 const Logo = (props) => <img {...props} src={logo} alt="" />;
-
-const SelfPortrait = (props) => <img {...props} src={selfPortrait} alt="" />;
 
 const ResumePhoto = (props) => <img {...props} src={resumePhoto} alt="" />;
 
@@ -54,7 +51,6 @@ export {
   ZigZag,
   HeartWithDashes,
   Logo,
-  SelfPortrait,
   ResumePhoto,
   WorkSlant,
   Star,
