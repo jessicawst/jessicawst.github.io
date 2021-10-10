@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import workList from '../data/workList';
+import { workList } from '../data/dataLists';
 import PDFViewer from '../utils/PDFViewer';
 import withMediaQuery from '../utils/withMediaQuery';
 

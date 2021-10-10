@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import withMediaQuery from '../utils/withMediaQuery';
-import workList from '../data/workList';
+import { workList } from '../data/dataLists';
 import { WorkSlant, Star, LatestWorkStar, ComingSoonStar } from '../assets';
 
 class Work extends React.Component {

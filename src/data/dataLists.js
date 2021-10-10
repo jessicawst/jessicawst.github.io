@@ -26,7 +26,25 @@ import istorybookoverall from './istorybook/istorybookoverall.jpg';
 import nurse from './nurse/nurse.png';
 import lifeofkid from './lifeofkid/lifeofkid.png';
 
-const workList = [
+export const flavourTextList = {
+  aboutMe: [
+    'I am an aspiring Visual Designer who currently is proficient in UX/UI and Graphic Design. I believe that there is no I in TEAM, and I have a willingness to lead and be led.',
+    'As someone who is adventurous and loves to be challenged, I believe that creativity thrives under immense pressure. However, what keeps me going is my burning passion and hunger to learn everyday.',
+    'In order to satisfy your needs and translate your wildest dreams into reality as a designer, I can create simple, elegant designs which are both pleasing to the eyes and functional. I believe in lifelong learning and I constantly look up and get inspired by new concepts and latest design trends. Nothing is impossible.',
+  ],
+  aboutTagline: 'If you can dream it, I can design it!',
+  contactMe:
+    'If you have a project that I am fit for it or any questions that you would like to ask, feel free to drop me an email and I will get back to you as soon as possible.',
+  email: 'jessicawst@outlook.com',
+  phoneNo: '9187 9338',
+  websiteLink: 'https://jessicawst.github.io/',
+  developerLink: 'https://keithcheongwaikeong.github.io/',
+  facebookLink: 'https://www.facebook.com/hamsterwst/',
+  instaLink: 'https://www.instagram.com/bluzstarz/',
+  linkedInLink: 'https://www.linkedin.com/in/jessica-wong-shu-ting-a791bb115/',
+};
+
+export const workList = [
   {
     name: 'Breast Care',
     title: "Julie's Biscuit Brand Bible",
@@ -247,5 +265,3 @@ const workList = [
     link: 'lifeofkid',
   },
 ];
-
-export default workList;

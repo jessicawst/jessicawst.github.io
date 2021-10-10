@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import withMediaQuery from '../utils/withMediaQuery';
 import { AboutCurve, ZigZag, HeartWithDashes, Logo, ResumePhoto } from '../assets';
+import { flavourTextList } from '../data/dataLists';
 
 class About extends React.Component {
   downloadResume() {
@@ -88,22 +89,13 @@ class About extends React.Component {
                 <ZigZag className={classes.helloZigZag} />
               </Grid>
               <Grid className={classes.resumeTextContainer}>
-                <Typography className={classes.resumeText} variant="body2">
-                  I am an UX/UI + Graphic Designer. Possessing the ability to lead and the
-                  willingness to be led, I am a team player who can also work well individually.
-                </Typography>
-                <Typography className={classes.resumeText} variant="body2">
-                  I am an individual driven to accomplish, to the best of my ability, the tasks
-                  given to me. Beyond my personal tasks, I would assist my peers and colleagues
-                  whenever I can. As someone who is adventurous and loves to be challenged, I
-                  believe that passion and hard work is the key to success.
-                </Typography>
-                <Typography className={classes.resumeText} variant="body2">
-                  A designer that seeks to satisfy your needs and translate your wildest dreams into
-                  reality.
-                </Typography>
+                {flavourTextList.aboutMe.map((text, index) => (
+                  <Typography className={classes.resumeText} key={index} variant="body2">
+                    {text}
+                  </Typography>
+                ))}
                 <Typography className={classes.resumeEmphasisText} variant="body2">
-                  If you can dream it, I can design it!
+                  {flavourTextList.aboutTagline}
                 </Typography>
               </Grid>
               <Grid className={classes.resumeButtonContainer}>

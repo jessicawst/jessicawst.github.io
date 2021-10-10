@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import withMediaQuery from '../utils/withMediaQuery';
 import { ContactPhotos, FBStar, InstaStar, LinkedinStar, RandomShapes } from '../assets';
+import { flavourTextList } from '../data/dataLists';
 
 class Contact extends React.Component {
   render() {
@@ -25,41 +26,43 @@ class Contact extends React.Component {
                   style={{ marginBottom: isMobile ? 8 : 24 }}
                   variant="body2"
                 >
-                  If you have a project that I am fit for it or any questions that you would like to
-                  ask, feel free to drop me an email and I will get back to you as soon as possible.
+                  {flavourTextList.contactMe}
                 </Typography>
                 <Typography className={classes.contactContent} variant="body2">
                   Email Address
-                  <a className={classes.contactLinkContainer} href="mailto:jessicawst@outlook.com">
+                  <a
+                    className={classes.contactLinkContainer}
+                    href={`mailto:${flavourTextList.email}`}
+                  >
                     <Typography className={classes.contactLinks} variant="body2">
-                      jessicawst@outlook.com
+                      {flavourTextList.email}
                     </Typography>
                   </a>
                 </Typography>
                 <Typography className={classes.contactContent} variant="body2">
                   Phone Number
-                  <a className={classes.contactLinkContainer} href="mailto:jessicawst@outlook.com">
+                  <a
+                    className={classes.contactLinkContainer}
+                    href={`mailto:${flavourTextList.email}`}
+                  >
                     <Typography className={classes.contactLinks} variant="body2">
-                      9187 9338
+                      {flavourTextList.phoneNo}
                     </Typography>
                   </a>
                 </Typography>
                 <Typography className={classes.contactContent} variant="body2">
                   On Web
-                  <a className={classes.contactLinkContainer} href="https://jessicawst.github.io/">
+                  <a className={classes.contactLinkContainer} href={flavourTextList.websiteLink}>
                     <Typography className={classes.contactLinks} variant="body2">
-                      jessicawst.github.io
+                      {flavourTextList.websiteLink.replace('https://', '').replace('/', '')}
                     </Typography>
                   </a>
                 </Typography>
                 <Typography className={classes.contactContent} variant="body2">
                   Website developed by
-                  <a
-                    className={classes.contactLinkContainer}
-                    href="https://keithcheongwaikeong.github.io/"
-                  >
+                  <a className={classes.contactLinkContainer} href={flavourTextList.developerLink}>
                     <Typography className={classes.contactLinks} variant="body2">
-                      keithcheongwaikeong.github.io
+                      {flavourTextList.developerLink.replace('https://', '').replace('/', '')}
                     </Typography>
                   </a>
                 </Typography>
@@ -75,13 +78,13 @@ class Contact extends React.Component {
               >
                 You can also follow me at:
                 <Grid>
-                  <a href="https://www.facebook.com/hamsterwst">
+                  <a href={flavourTextList.facebookLink}>
                     <FBStar className={classes.contactIcons} />
                   </a>
-                  <a href="https://www.instagram.com/bluzstarz/">
+                  <a href={flavourTextList.instaLink}>
                     <InstaStar className={classes.contactIcons} />
                   </a>
-                  <a href="https://www.linkedin.com/in/jessica-wong-shu-ting-a791bb115/">
+                  <a href={flavourTextList.linkedInLink}>
                     <LinkedinStar className={classes.contactIcons} />
                   </a>
                 </Grid>
