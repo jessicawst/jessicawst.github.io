@@ -4,9 +4,10 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/styles';
+import withMediaQuery from './withMediaQuery';
 
 const PDFViewer = (props) => {
-  const { classes, url } = props;
+  const { classes, url, isDesktop } = props;
 
   const [componentWidth, setComponentWidth] = useState(window.innerWidth - 160);
   const [numPages, setNumPages] = useState(null);
@@ -15,6 +16,11 @@ const PDFViewer = (props) => {
 
   const isFirstPage = pageNumber <= 1;
   const isLastPage = pageNumber >= numPages;
+  let pageName = `Page ${pageNumber} of ${numPages}`;
+  if (isDesktop && !isFirstPage) {
+    if (isLastPage) pageName = `Page ${pageNumber - 1} of ${numPages}`;
+    else pageName = `Page ${pageNumber - 1} & ${pageNumber} of ${numPages}`;
+  }
 
   useEffect(() => {
     const setWidth = () => setComponentWidth(window.innerWidth - 160);
@@ -28,15 +34,19 @@ const PDFViewer = (props) => {
   }
 
   function changePage(offset) {
-    setPageNumber((prevPageNumber) => prevPageNumber + offset);
+    setPageNumber((prevPageNumber) => {
+      const newPageNumber = prevPageNumber + offset;
+      if (newPageNumber <= 0) return 1;
+      else return newPageNumber;
+    });
   }
 
   function previousPage() {
-    changePage(-1);
+    changePage(isDesktop ? -2 : -1);
   }
 
   function nextPage() {
-    changePage(1);
+    changePage(isDesktop ? 2 : 1);
   }
 
   return (
@@ -53,9 +63,7 @@ const PDFViewer = (props) => {
         >
           <Typography className={classes.buttonText}>Prev</Typography>
         </Button>
-        <Typography
-          className={classes.pageNumText}
-        >{`Page ${pageNumber} of ${numPages}`}</Typography>
+        <Typography className={classes.pageNumText}>{pageName}</Typography>
         <Button
           className={classes.button}
           variant="contained"
@@ -69,7 +77,20 @@ const PDFViewer = (props) => {
         </Button>
       </Grid>
       <Document className={classes.document} file={file} onLoadSuccess={onDocumentLoadSuccess}>
-        <Page width={componentWidth} noData="" pageNumber={pageNumber} />
+        {isDesktop && !isFirstPage && (
+          <Page
+            width={isDesktop ? componentWidth / 2 : componentWidth}
+            noData=""
+            pageNumber={pageNumber - 1}
+          />
+        )}
+        {(!isDesktop || !isLastPage) && (
+          <Page
+            width={isDesktop ? componentWidth / 2 : componentWidth}
+            noData=""
+            pageNumber={pageNumber}
+          />
+        )}
       </Document>
     </div>
   );
@@ -112,4 +133,4 @@ const styles = (theme) => ({
   },
 });
 
-export default withStyles(styles)(PDFViewer);
+export default withStyles(styles)(withMediaQuery(PDFViewer));
