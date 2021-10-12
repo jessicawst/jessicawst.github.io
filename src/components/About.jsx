@@ -103,7 +103,7 @@ class About extends React.Component {
                   className={classes.resumeButton}
                   variant="contained"
                   color="secondary"
-                  onClick={this.downloadResume}
+                  // onClick={this.downloadResume}
                 >
                   <Typography className={classes.resumeButtonText}>Download Resume</Typography>
                 </Button>
