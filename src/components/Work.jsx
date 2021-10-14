@@ -30,15 +30,7 @@ class Work extends React.Component {
             </Grid>
           </Grid>
           <div className={classes.workContainer}>
-            <Grid
-              className={classes.workGridContainer}
-              container
-              lg={12}
-              md={12}
-              sm={12}
-              spacing={2}
-              alignItems="center"
-            >
+            <Grid className={classes.workGridContainer} container spacing={2} alignItems="center">
               {workList.map((item, index) => (
                 <Grid key={index} item lg={4} md={6} sm={6} xs={12}>
                   <Button
@@ -71,10 +63,13 @@ class Work extends React.Component {
 
 const styles = (theme) => ({
   mainContainer: {
+    backgroundColor: theme.palette.secondary.main + '1A',
     width: '100%',
   },
   topSlant: {
+    marginTop: -4,
     width: '100%',
+    transform: 'rotate(180deg)',
   },
   workTitleContainer: {
     height: 80,
@@ -124,7 +119,6 @@ const styles = (theme) => ({
     },
   },
   workContainer: {
-    backgroundColor: theme.palette.secondary.main + '1A',
     display: 'grid',
     justifyContent: 'center',
     alignItems: 'center',
@@ -171,8 +165,8 @@ const styles = (theme) => ({
     },
   },
   bottomSlant: {
+    marginBottom: -8,
     width: '100%',
-    transform: 'rotate(180deg)',
   },
 });
 

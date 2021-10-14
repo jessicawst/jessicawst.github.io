@@ -179,6 +179,7 @@ const styles = (theme) => ({
   },
   resumePhoto: {
     width: '100%',
+    zIndex: 1,
   },
   resumeContainer: {
     [theme.breakpoints.down('md')]: {

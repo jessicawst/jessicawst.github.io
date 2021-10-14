@@ -11,88 +11,86 @@ class Contact extends React.Component {
     const { classes, isMobile } = this.props;
 
     return (
-      <div id="contact">
-        <div className={classes.mainContainer}>
-          <Grid className={classes.contactContainer} container lg={12} md={12} sm={12}>
-            <Grid className={classes.photoContainer} item lg={6} md={12} sm={12}>
-              <RandomShapes className={classes.topShapes} />
-              <ContactPhotos className={classes.contactPhotos} />
-            </Grid>
-            <Grid className={classes.contactTextContainer} item lg={6} md={12} sm={12}>
-              <Grid className={classes.contactInfoContainer}>
-                <Typography className={classes.contactTitle}>CONTACT ME!</Typography>
-                <Typography
-                  className={classes.contactContent}
-                  style={{ marginBottom: isMobile ? 8 : 24 }}
-                  variant="body2"
-                >
-                  {flavourTextList.contactMe}
-                </Typography>
-                <Typography className={classes.contactContent} variant="body2">
-                  Email Address
-                  <a
-                    className={classes.contactLinkContainer}
-                    href={`mailto:${flavourTextList.email}`}
-                  >
-                    <Typography className={classes.contactLinks} variant="body2">
-                      {flavourTextList.email}
-                    </Typography>
-                  </a>
-                </Typography>
-                <Typography className={classes.contactContent} variant="body2">
-                  Phone Number
-                  <a
-                    className={classes.contactLinkContainer}
-                    href={`mailto:${flavourTextList.email}`}
-                  >
-                    <Typography className={classes.contactLinks} variant="body2">
-                      {flavourTextList.phoneNo}
-                    </Typography>
-                  </a>
-                </Typography>
-                <Typography className={classes.contactContent} variant="body2">
-                  On Web
-                  <a className={classes.contactLinkContainer} href={flavourTextList.websiteLink}>
-                    <Typography className={classes.contactLinks} variant="body2">
-                      {flavourTextList.websiteLink.replace('https://', '').replace('/', '')}
-                    </Typography>
-                  </a>
-                </Typography>
-                <Typography className={classes.contactContent} variant="body2">
-                  Website developed by
-                  <a className={classes.contactLinkContainer} href={flavourTextList.developerLink}>
-                    <Typography className={classes.contactLinks} variant="body2">
-                      {flavourTextList.developerLink.replace('https://', '').replace('/', '')}
-                    </Typography>
-                  </a>
-                </Typography>
-              </Grid>
+      <div className={classes.mainContainer} id="contact">
+        <Grid className={classes.contactContainer} container lg={12} md={12} sm={12}>
+          <Grid className={classes.photoContainer} item lg={6} md={12} sm={12}>
+            <RandomShapes className={classes.topShapes} />
+            <ContactPhotos className={classes.contactPhotos} />
+          </Grid>
+          <Grid className={classes.contactTextContainer} item lg={6} md={12} sm={12}>
+            <Grid className={classes.contactInfoContainer}>
+              <Typography className={classes.contactTitle}>CONTACT ME!</Typography>
               <Typography
                 className={classes.contactContent}
-                style={{
-                  fontWeight: 'bold',
-                  letterSpacing: 1,
-                  zIndex: 2,
-                }}
+                style={{ marginBottom: isMobile ? 8 : 24 }}
                 variant="body2"
               >
-                You can also follow me at:
-                <Grid>
-                  <a href={flavourTextList.facebookLink}>
-                    <FBStar className={classes.contactIcons} />
-                  </a>
-                  <a href={flavourTextList.instaLink}>
-                    <InstaStar className={classes.contactIcons} />
-                  </a>
-                  <a href={flavourTextList.linkedInLink}>
-                    <LinkedinStar className={classes.contactIcons} />
-                  </a>
-                </Grid>
+                {flavourTextList.contactMe}
               </Typography>
-              <RandomShapes className={classes.bottomShapes} />
+              <Typography className={classes.contactContent} variant="body2">
+                Email Address
+                <a
+                  className={classes.contactLinkContainer}
+                  href={`mailto:${flavourTextList.email}`}
+                >
+                  <Typography className={classes.contactLinks} variant="body2">
+                    {flavourTextList.email}
+                  </Typography>
+                </a>
+              </Typography>
+              <Typography className={classes.contactContent} variant="body2">
+                Phone Number
+                <a
+                  className={classes.contactLinkContainer}
+                  href={`mailto:${flavourTextList.email}`}
+                >
+                  <Typography className={classes.contactLinks} variant="body2">
+                    {flavourTextList.phoneNo}
+                  </Typography>
+                </a>
+              </Typography>
+              <Typography className={classes.contactContent} variant="body2">
+                On Web
+                <a className={classes.contactLinkContainer} href={flavourTextList.websiteLink}>
+                  <Typography className={classes.contactLinks} variant="body2">
+                    {flavourTextList.websiteLink.replace('https://', '').replace('/', '')}
+                  </Typography>
+                </a>
+              </Typography>
+              <Typography className={classes.contactContent} variant="body2">
+                Website developed by
+                <a className={classes.contactLinkContainer} href={flavourTextList.developerLink}>
+                  <Typography className={classes.contactLinks} variant="body2">
+                    {flavourTextList.developerLink.replace('https://', '').replace('/', '')}
+                  </Typography>
+                </a>
+              </Typography>
             </Grid>
+            <Typography
+              className={classes.contactContent}
+              style={{
+                fontWeight: 'bold',
+                letterSpacing: 1,
+                zIndex: 2,
+              }}
+              variant="body2"
+            >
+              You can also follow me at:
+              <Grid>
+                <a href={flavourTextList.facebookLink}>
+                  <FBStar className={classes.contactIcons} />
+                </a>
+                <a href={flavourTextList.instaLink}>
+                  <InstaStar className={classes.contactIcons} />
+                </a>
+                <a href={flavourTextList.linkedInLink}>
+                  <LinkedinStar className={classes.contactIcons} />
+                </a>
+              </Grid>
+            </Typography>
+            <RandomShapes className={classes.bottomShapes} />
           </Grid>
-        </div>
+        </Grid>
       </div>
     );
   }
