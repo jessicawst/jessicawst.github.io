@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build and deploy app
-        run: yarn run deploy
+        run: yarn && yarn run deploy
