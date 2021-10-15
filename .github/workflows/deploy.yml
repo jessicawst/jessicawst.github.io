@@ -11,6 +11,7 @@ jobs:
       - name: Build app
         run: yarn && yarn run build
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: crazy-max/ghaction-github-pages@v2
