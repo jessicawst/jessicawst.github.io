@@ -8,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with: 
-          author_name: github-actions[bot]
-          author_email: github-actions[bot]@users.noreply.github.com
-      - name: Build and deploy app
-        run: yarn && yarn run deploy
+      - name: Build app
+        run: yarn && yarn run build
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
