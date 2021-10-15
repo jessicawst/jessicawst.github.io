@@ -28,8 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
-    "postdeploy": "git push"
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
