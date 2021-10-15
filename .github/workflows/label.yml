@@ -1,7 +1,8 @@
 name: 'Push Labeler'
 on:
-  branches:
-    - main
+  push:
+    branches:
+      - main
 
 jobs:
   triage:
