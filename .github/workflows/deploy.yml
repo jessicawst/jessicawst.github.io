@@ -4,20 +4,16 @@ on:
     branches:
       - main
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build app
         run: yarn && yarn run build
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-     - if: success()
-     - uses: crazy-max/ghaction-github-pages@v2
-       with:
-        target_branch: gh-pages
-        build_dir: public
-       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: crazy-max/ghaction-github-pages@v2
+        if: success()
+        with:
+         target_branch: gh-pages
+         build_dir: public
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
