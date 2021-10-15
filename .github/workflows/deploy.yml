@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with: 
+          author_name: github-actions[bot]
+          author_email: github-actions[bot]@users.noreply.github.com
       - name: Build and deploy app
-        run: | 
-         git config --local user.name 'Github Action'
-         git config --local user.email action@github.com
-         yarn && yarn run deploy
+        run: yarn && yarn run deploy
