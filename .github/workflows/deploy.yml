@@ -9,4 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build and deploy app
-        run: yarn && yarn run deploy
+        run: | 
+         git config --local user.name 'github-actions[bot]'
+         git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+         yarn && yarn run deploy
