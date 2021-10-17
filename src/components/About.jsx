@@ -270,6 +270,7 @@ const styles = (theme) => ({
     boxShadow: 'none',
     borderRadius: 8,
     marginTop: 16,
+    zIndex: 1,
     [theme.breakpoints.down('md')]: {
       height: 56,
       width: 214,

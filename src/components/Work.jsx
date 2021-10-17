@@ -77,7 +77,6 @@ const styles = (theme) => ({
     [theme.breakpoints.down('sm')]: {
       height: 40,
       marginTop: -5,
-      backgroundColor: theme.palette.secondary.main + '1A',
     },
   },
   workTitleText: {
