@@ -47,7 +47,7 @@ class About extends React.Component {
             <Grid item lg={12} md={12} sm={12} xs={12}>
               <AboutCurve className={classes.aboutCurve} />
             </Grid>
-            {isDesktop ? (
+            {isDesktop && (
               <Grid
                 className={classes.resumePhotoContainer}
                 container
@@ -58,8 +58,6 @@ class About extends React.Component {
               >
                 <ResumePhoto className={classes.resumePhoto} />
               </Grid>
-            ) : (
-              ''
             )}
             <Grid
               className={classes.resumeContainer}
@@ -124,7 +122,7 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.primary.main,
   },
   introCardHeart: {
-    width: '100%',
+    width: '80%',
     zIndex: 1,
   },
   introCardTextContainer: {
