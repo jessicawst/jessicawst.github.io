@@ -12,7 +12,7 @@ class Contact extends React.Component {
 
     return (
       <div className={classes.mainContainer} id="contact">
-        <Grid className={classes.contactContainer} container lg={12} md={12} sm={12}>
+        <Grid className={classes.contactContainer} container>
           <Grid className={classes.photoContainer} item lg={6} md={12} sm={12}>
             <RandomShapes className={classes.topShapes} />
             <ContactPhotos className={classes.contactPhotos} />
@@ -27,7 +27,7 @@ class Contact extends React.Component {
               >
                 {flavourTextList.contactMe}
               </Typography>
-              <Typography className={classes.contactContent} variant="body2">
+              <Typography className={classes.contactContent} component="div" variant="body2">
                 Email Address
                 <a
                   className={classes.contactLinkContainer}
@@ -38,7 +38,7 @@ class Contact extends React.Component {
                   </Typography>
                 </a>
               </Typography>
-              <Typography className={classes.contactContent} variant="body2">
+              <Typography className={classes.contactContent} component="div" variant="body2">
                 Phone Number
                 <a
                   className={classes.contactLinkContainer}
@@ -49,7 +49,7 @@ class Contact extends React.Component {
                   </Typography>
                 </a>
               </Typography>
-              <Typography className={classes.contactContent} variant="body2">
+              <Typography className={classes.contactContent} component="div" variant="body2">
                 On Web
                 <a className={classes.contactLinkContainer} href={flavourTextList.websiteLink}>
                   <Typography className={classes.contactLinks} variant="body2">
@@ -57,7 +57,7 @@ class Contact extends React.Component {
                   </Typography>
                 </a>
               </Typography>
-              <Typography className={classes.contactContent} variant="body2">
+              <Typography className={classes.contactContent} component="div" variant="body2">
                 Website developed by
                 <a className={classes.contactLinkContainer} href={flavourTextList.developerLink}>
                   <Typography className={classes.contactLinks} variant="body2">
@@ -68,6 +68,7 @@ class Contact extends React.Component {
             </Grid>
             <Typography
               className={classes.contactContent}
+              component="div"
               style={{
                 fontWeight: 'bold',
                 letterSpacing: 1,

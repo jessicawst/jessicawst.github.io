@@ -2,6 +2,7 @@
 build
 coverage
 pfolio
+.github
 
 # Ignore all HTML files:
 *.html
