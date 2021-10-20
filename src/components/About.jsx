@@ -122,7 +122,7 @@ const styles = (theme) => ({
     backgroundColor: theme.palette.primary.main,
   },
   introCardHeart: {
-    width: '80%',
+    width: '100%',
     zIndex: 1,
   },
   introCardTextContainer: {

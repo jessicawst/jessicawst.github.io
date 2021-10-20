@@ -2,7 +2,7 @@ import React from 'react';
 import shuLogo from './shuLogo.png';
 import aboutCurve from './aboutCurve.svg';
 import zigZag from './zigZag.svg';
-import heartWithDashes from './heartWithDashes.svg';
+import heartWithDashes from './heartWithDashes.png';
 import logo from './logo.svg';
 import resumePhoto from './resumePhoto.png';
 import workSlant from './workSlant.svg';
