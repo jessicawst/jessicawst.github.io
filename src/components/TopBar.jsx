@@ -15,70 +15,37 @@ import MenuIcon from '@material-ui/icons/Menu';
 import withMediaQuery from '../utils/withMediaQuery';
 import { ShuLogo } from '../assets';
 
-const StyledTabs = withStyles((theme) => ({
-  flexContainer: {
-    height: '100%',
-  },
-  indicator: {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    height: 4,
-    bottom: 32,
-    '& > span': {
-      maxWidth: 100,
-      width: '100%',
-      backgroundColor: theme.palette.secondary.main,
-    },
-  },
-}))((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
+const handleClick = (history, location, closeSwipeableDrawer = null) => {
+  if (history.location.pathname !== '/') history.push('/');
+  closeSwipeableDrawer && closeSwipeableDrawer();
 
-const SwipeableDrawerList = (props) => (
+  setTimeout(
+    () =>
+      document.getElementById(location).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      }),
+    100
+  );
+};
+
+const SwipeableDrawerList = ({ closeSwipeableDrawer, history }) => (
   <List style={{ width: '100%' }}>
     <ListItem style={{ justifyContent: 'center' }}>
-      <ButtonBase
-        onClick={() => {
-          props.closeSwipeableDrawer();
-          props.history.push('/');
-          document.getElementById('about').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-            inline: 'nearest',
-          });
-        }}
-      >
+      <ButtonBase onClick={() => handleClick(history, 'about', closeSwipeableDrawer)}>
         <Typography style={{ fontSize: 20 }}>ABOUT ME</Typography>
       </ButtonBase>
     </ListItem>
     <Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
     <ListItem style={{ justifyContent: 'center' }}>
-      <ButtonBase
-        onClick={() => {
-          props.closeSwipeableDrawer();
-          props.history.push('/');
-          document.getElementById('work').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-            inline: 'nearest',
-          });
-        }}
-      >
+      <ButtonBase onClick={() => handleClick(history, 'work', closeSwipeableDrawer)}>
         <Typography style={{ fontSize: 20 }}>MY WORK</Typography>
       </ButtonBase>
     </ListItem>
     <Divider style={{ borderWidth: 1, backgroundColor: 'black' }} />
     <ListItem style={{ justifyContent: 'center' }}>
-      <ButtonBase
-        onClick={() => {
-          props.closeSwipeableDrawer();
-          props.history.push('/');
-          document.getElementById('contact').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-            inline: 'nearest',
-          });
-        }}
-      >
+      <ButtonBase onClick={() => handleClick(history, 'contact', closeSwipeableDrawer)}>
         <Typography style={{ fontSize: 20 }}>CONTACT ME</Typography>
       </ButtonBase>
     </ListItem>
@@ -89,7 +56,7 @@ const DesktopBar = (props) => {
   const { classes, isDesktop, value, setValue } = props;
   const history = useHistory();
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_event, newValue) => {
     setValue(newValue);
   };
 
@@ -105,67 +72,16 @@ const DesktopBar = (props) => {
         variant={isDesktop ? 'standard' : 'fullWidth'}
       >
         <Tab
-          label={
-            <Typography
-              style={{
-                fontSize: 20,
-                height: '100%',
-                margin: '0px 20px',
-              }}
-            >
-              ABOUT ME
-            </Typography>
-          }
-          onClick={() => {
-            history.push('/');
-            document.getElementById('about').scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-              inline: 'nearest',
-            });
-          }}
+          label={<Typography className={classes.tabText}>ABOUT ME</Typography>}
+          onClick={() => handleClick(history, 'about')}
         />
         <Tab
-          label={
-            <Typography
-              style={{
-                fontSize: 20,
-                height: '100%',
-                margin: '0px 20px',
-              }}
-            >
-              MY WORK
-            </Typography>
-          }
-          onClick={() => {
-            history.push('/');
-            document.getElementById('work').scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-              inline: 'nearest',
-            });
-          }}
+          label={<Typography className={classes.tabText}>MY WORK</Typography>}
+          onClick={() => handleClick(history, 'work')}
         />
         <Tab
-          label={
-            <Typography
-              style={{
-                fontSize: 20,
-                height: '100%',
-                margin: '0px 20px',
-              }}
-            >
-              CONTACT ME
-            </Typography>
-          }
-          onClick={() => {
-            history.push('/');
-            document.getElementById('contact').scrollIntoView({
-              behavior: 'smooth',
-              block: 'end',
-              inline: 'nearest',
-            });
-          }}
+          label={<Typography className={classes.tabText}>CONTACT ME</Typography>}
+          onClick={() => handleClick(history, 'contact')}
         />
       </StyledTabs>
     </AppBar>
@@ -233,6 +149,11 @@ const styles = (theme) => ({
     width: '100%',
     height: '100%',
   },
+  tabText: {
+    fontSize: 20,
+    height: '100%',
+    margin: '0px 20px',
+  },
   drawerIcon: {
     fill: 'white',
     margin: 16,
@@ -245,5 +166,23 @@ const styles = (theme) => ({
     alignItems: 'center',
   },
 });
+
+const StyledTabs = withStyles((theme) => ({
+  flexContainer: {
+    height: '100%',
+  },
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    height: 4,
+    bottom: 32,
+    '& > span': {
+      maxWidth: 100,
+      width: '100%',
+      backgroundColor: theme.palette.secondary.main,
+    },
+  },
+}))((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
 export default withStyles(styles)(withMediaQuery(TopBar));

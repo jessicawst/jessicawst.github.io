@@ -13,49 +13,43 @@ class Work extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div id="work">
-        <div className={classes.mainContainer}>
-          <WorkSlant className={classes.topSlant} />
-          <Grid
-            className={classes.workTitleContainer}
-            container
-            direction="column"
-            alignContent="center"
-            justifyContent="center"
-          >
-            <Typography className={classes.workTitleText}>MY WORK</Typography>
-            <Grid className={classes.titleAccent}>
-              <Typography className={classes.titleAccentText}>awesome projects</Typography>
-              <Star className={classes.star} />
-            </Grid>
+      <div className={classes.mainContainer} id="work">
+        <WorkSlant className={classes.topSlant} />
+        <Grid
+          className={classes.workTitleContainer}
+          container
+          direction="column"
+          alignContent="center"
+          justifyContent="center"
+        >
+          <Typography className={classes.workTitleText}>MY WORK</Typography>
+          <Grid className={classes.titleAccent}>
+            <Typography className={classes.titleAccentText}>awesome projects</Typography>
+            <Star className={classes.star} />
           </Grid>
-          <div className={classes.workContainer}>
-            <Grid className={classes.workGridContainer} container spacing={2} alignItems="center">
-              {workList.map((item, index) => (
-                <Grid key={index} item lg={4} md={6} sm={6} xs={12}>
-                  <Button
-                    className={classes.workListItem}
-                    to={`${item.link}`}
-                    component={Link}
-                    disableRipple
-                    disableTouchRipple
-                    disableFocusRipple
-                    disableElevation
-                  >
-                    <img className={classes.workListItemLogo} src={item.logo} alt="" />
-                    {item.isLatest ? <LatestWorkStar className={classes.workListItemStar} /> : ''}
-                    {item.isComingSoon ? (
-                      <ComingSoonStar className={classes.workListItemStar} />
-                    ) : (
-                      ''
-                    )}
-                  </Button>
-                </Grid>
-              ))}
-            </Grid>
-          </div>
-          <WorkSlant className={classes.bottomSlant} />
+        </Grid>
+        <div className={classes.workContainer}>
+          <Grid className={classes.workGridContainer} container spacing={2} alignItems="center">
+            {workList.map((item, index) => (
+              <Grid key={index} item lg={4} md={6} sm={6} xs={12}>
+                <Button
+                  className={classes.workListItem}
+                  to={`${item.link}`}
+                  component={Link}
+                  disableRipple
+                  disableTouchRipple
+                  disableFocusRipple
+                  disableElevation
+                >
+                  <img className={classes.workListItemLogo} src={item.logo} alt="" />
+                  {item.isLatest ? <LatestWorkStar className={classes.workListItemStar} /> : ''}
+                  {item.isComingSoon ? <ComingSoonStar className={classes.workListItemStar} /> : ''}
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
         </div>
+        <WorkSlant className={classes.bottomSlant} />
       </div>
     );
   }

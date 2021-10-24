@@ -8,107 +8,105 @@ import { AboutCurve, ZigZag, HeartWithDashes, Logo, ResumePhoto } from '../asset
 import { flavourTextList } from '../data/dataLists';
 
 class About extends React.Component {
-  downloadResume() {
-    const link = document.createElement('a');
-    link.download = `Shuting_Resume.pdf`;
-    link.href = 'pdfs/Shuting_Resume.pdf';
-    link.click();
-  }
+  // downloadResume () => {
+  //   const link = document.createElement('a');
+  //   link.download = `Shuting_Resume.pdf`;
+  //   link.href = 'pdfs/Shuting_Resume.pdf';
+  //   link.click();
+  // };
 
   render() {
     const { classes, isDesktop } = this.props;
 
     return (
-      <div id="about">
-        <div className={classes.mainContainer}>
-          <Grid container>
-            <Grid
-              className={classes.introCardContainer}
-              container
-              item
-              lg={12}
-              md={12}
-              sm={12}
-              xs={12}
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <HeartWithDashes className={classes.introCardHeart} />
-              <Grid className={classes.introCardTextContainer}>
-                <Typography className={classes.introCardTopText}>
-                  I&apos;m <Logo className={classes.introCardLogo} /> -
-                </Typography>
-                <Typography className={classes.introCardBottomText}>
-                  UI/UX + Graphic Designer
-                </Typography>
-              </Grid>
+      <div className={classes.mainContainer} id="about">
+        <Grid container>
+          <Grid
+            className={classes.introCardContainer}
+            container
+            item
+            lg={12}
+            md={12}
+            sm={12}
+            xs={12}
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <HeartWithDashes className={classes.introCardHeart} />
+            <Grid className={classes.introCardTextContainer}>
+              <Typography className={classes.introCardTopText}>
+                I&apos;m <Logo className={classes.introCardLogo} /> -
+              </Typography>
+              <Typography className={classes.introCardBottomText}>
+                UI/UX + Graphic Designer
+              </Typography>
             </Grid>
-            <Grid item lg={12} md={12} sm={12} xs={12}>
-              <AboutCurve className={classes.aboutCurve} />
-            </Grid>
-            {isDesktop && (
-              <Grid
-                className={classes.resumePhotoContainer}
-                container
-                item
-                lg={6}
-                justifyContent="center"
-                alignItems="center"
-              >
-                <ResumePhoto className={classes.resumePhoto} />
-              </Grid>
-            )}
+          </Grid>
+          <Grid item lg={12} md={12} sm={12} xs={12}>
+            <AboutCurve className={classes.aboutCurve} />
+          </Grid>
+          {isDesktop && (
             <Grid
-              className={classes.resumeContainer}
+              className={classes.resumePhotoContainer}
               container
               item
               lg={6}
-              md={12}
-              sm={12}
-              xs={12}
-              direction="column"
               justifyContent="center"
+              alignItems="center"
+            >
+              <ResumePhoto className={classes.resumePhoto} />
+            </Grid>
+          )}
+          <Grid
+            className={classes.resumeContainer}
+            container
+            item
+            lg={6}
+            md={12}
+            sm={12}
+            xs={12}
+            direction="column"
+            justifyContent="center"
+          >
+            <Grid
+              className={classes.helloContainer}
+              container
+              alignItems="flex-end"
+              justifyContent={!isDesktop ? 'center' : 'flex-start'}
             >
               <Grid
-                className={classes.helloContainer}
+                className={classes.helloFlavor}
                 container
-                alignItems="flex-end"
-                justifyContent={!isDesktop ? 'center' : 'flex-start'}
+                alignContent="flex-end"
+                justifyContent="flex-start"
               >
-                <Grid
-                  className={classes.helloFlavor}
-                  container
-                  alignContent="flex-end"
-                  justifyContent="flex-start"
-                >
-                  <Typography className={classes.helloText}>HELLO!</Typography>
-                </Grid>
-                <ZigZag className={classes.helloZigZag} />
+                <Typography className={classes.helloText}>HELLO!</Typography>
               </Grid>
-              <Grid className={classes.resumeTextContainer}>
-                {flavourTextList.aboutMe.map((text, index) => (
-                  <Typography className={classes.resumeText} key={index} variant="body2">
-                    {text}
-                  </Typography>
-                ))}
-                <Typography className={classes.resumeEmphasisText} variant="body2">
-                  {flavourTextList.aboutTagline}
+              <ZigZag className={classes.helloZigZag} />
+            </Grid>
+            <Grid className={classes.resumeTextContainer}>
+              {flavourTextList.aboutMe.map((text, index) => (
+                <Typography className={classes.resumeText} key={index} variant="body2">
+                  {text}
                 </Typography>
-              </Grid>
-              <Grid className={classes.resumeButtonContainer}>
-                <Button
-                  className={classes.resumeButton}
-                  variant="contained"
-                  color="secondary"
-                  // onClick={this.downloadResume}
-                >
-                  <Typography className={classes.resumeButtonText}>Download Resume</Typography>
-                </Button>
-              </Grid>
+              ))}
+              <Typography className={classes.resumeEmphasisText} variant="body2">
+                {flavourTextList.aboutTagline}
+              </Typography>
+            </Grid>
+            <Grid className={classes.resumeButtonContainer}>
+              <Button
+                className={classes.resumeButton}
+                variant="contained"
+                color="secondary"
+                // onClick={this.downloadResume}
+              >
+                <Typography className={classes.resumeButtonText}>Download Resume</Typography>
+              </Button>
             </Grid>
           </Grid>
-        </div>
+        </Grid>
       </div>
     );
   }

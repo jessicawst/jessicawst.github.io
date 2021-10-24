@@ -20,7 +20,7 @@ const WorkDetails = (props) => {
 
   if (isComingSoon)
     return (
-      <Grid className={classes.comingSoonContainer} container>
+      <Grid className={[classes.comingSoonContainer, classes.mainContainer]} container>
         <Typography>{`${name} is still in the works! Please enjoy the other parts of my content first!`}</Typography>
       </Grid>
     );
@@ -88,10 +88,6 @@ const WorkDetails = (props) => {
 };
 
 const styles = (theme) => ({
-  comingSoonContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   mainContainer: {
     marginTop: 96,
     padding: '40px 80px',
@@ -104,6 +100,10 @@ const styles = (theme) => ({
     [theme.breakpoints.down('xs')]: {
       padding: 8,
     },
+  },
+  comingSoonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logoContainer: {
     width: '100%',
