@@ -8,12 +8,13 @@ import { AboutCurve, ZigZag, HeartWithDashes, Logo, ResumePhoto } from '../asset
 import { flavourTextList } from '../data/dataLists';
 
 class About extends React.Component {
-  // downloadResume () => {
-  //   const link = document.createElement('a');
-  //   link.download = `Shuting_Resume.pdf`;
-  //   link.href = 'pdfs/Shuting_Resume.pdf';
-  //   link.click();
-  // };
+  downloadResume = () => {
+    const link = document.createElement('a');
+    link.download = `Shuting_Resume.pdf`;
+    link.href = 'pdfs/Shuting_Resume.pdf';
+    link.click();
+    link.remove();
+  };
 
   render() {
     const { classes, isDesktop } = this.props;
@@ -100,7 +101,7 @@ class About extends React.Component {
                 className={classes.resumeButton}
                 variant="contained"
                 color="secondary"
-                // onClick={this.downloadResume}
+                onClick={this.downloadResume}
               >
                 <Typography className={classes.resumeButtonText}>Download Resume</Typography>
               </Button>
