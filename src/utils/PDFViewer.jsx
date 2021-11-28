@@ -117,6 +117,7 @@ const styles = (theme) => ({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 1,
   },
   pageNumText: {
     margin: '0px 8px',
