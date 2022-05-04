@@ -15,7 +15,8 @@ const WorkDetails = (props) => {
   const currentWork = workList.find((item) => item.link === match.params.id);
   if (!currentWork) return <Redirect to="/" />;
 
-  const { isComingSoon, name, title, tags, description, logo, images, video, pdf } = currentWork;
+  const { isComingSoon, name, title, tags, description, logo, images, video, pdf, url } =
+    currentWork;
   const tagString = tags.join(' | ');
 
   if (isComingSoon)
@@ -71,7 +72,7 @@ const WorkDetails = (props) => {
           </Grid>
         </Grid>
       )}
-      {images.length > 0 && (
+      {!url && images && images.length > 0 && (
         <Grid className={classes.contentContainer} item lg={12} md={12} sm={12} xs={12}>
           <Typography className={classes.contentTitle}>
             Below is the artwork designed for {name}:
@@ -80,6 +81,18 @@ const WorkDetails = (props) => {
             {images.map((image, index) => (
               <img key={index} className={classes.image} src={image} alt="" />
             ))}
+          </Grid>
+        </Grid>
+      )}
+      {url && (
+        <Grid className={classes.contentContainer} item lg={12} md={12} sm={12} xs={12}>
+          <Typography className={classes.contentTitle}>
+            Click below to access {name}:
+          </Typography>
+          <Grid className={classes.designs} item>
+            <a href={url} rel="noopener noreferrer" target="_blank">
+              <img className={classes.image} src={images[0]} alt="" />
+            </a>
           </Grid>
         </Grid>
       )}
@@ -111,7 +124,7 @@ const styles = (theme) => ({
     flexDirection: 'column',
     textAlign: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   logo: {
     borderRadius: '50%',

@@ -25,6 +25,8 @@ import istorybook from './istorybook/istorybook.png';
 import istorybookoverall from './istorybook/istorybookoverall.jpg';
 import nurse from './nurse/nurse.png';
 import lifeofkid from './lifeofkid/lifeofkid.png';
+import shutingcreativepflio from './shutingcreativepflio/creative.png';
+import shutingcreativepfliooverall from './shutingcreativepflio/creativeoverall.png';
 
 export const flavourTextList = {
   aboutMe: [
@@ -46,6 +48,18 @@ export const flavourTextList = {
 
 export const workList = [
   {
+    name: 'My Creative Portfolio',
+    title: 'My Creative Portfolio',
+    tags: ['Product Design', 'Banners', 'Rich Media'],
+    description: `My aim is to focused in finding a balanced approach of design, technology, and application of cultural trends to rich media ads that will connect people to brands. Please feel free to browse through my latest work and feel free to contact me if you think there is any suitable projects or job for me!`,
+    logo: shutingcreativepflio,
+    isComingSoon: false,
+    images: [shutingcreativepfliooverall],
+    isLatest: true,
+    url: 'https://docs.google.com/presentation/d/1e9GhafLfPUmwVUYsoFD-pRYlT0E8hu1XeOyY-uA62PQ/edit?usp=sharing',
+    link: 'creativeportfolio'
+  },
+  {
     name: 'Breast Cancer Literacy',
     title: 'Breast Cancer Literacy Research Project',
     tags: [`Research`, `Product Design`, `Web Design`, `Mobile App Design`],
@@ -55,7 +69,7 @@ export const workList = [
     video: '',
     pdf: 'Breast_Cancer_Literacy.pdf',
     isComingSoon: false,
-    isLatest: true,
+    isLatest: false,
     link: 'breastcare',
   },
   {
