@@ -50,7 +50,7 @@ export const workList = [
   {
     name: 'My Creative Portfolio',
     title: 'My Creative Portfolio',
-    tags: ['Product Design', 'Banners', 'Rich Media'],
+    tags: ['Banners', 'Rich Media'],
     description: `My aim is to focused in finding a balanced approach of design, technology, and application of cultural trends to rich media ads that will connect people to brands. Please feel free to browse through my latest work and feel free to contact me if you think there is any suitable projects or job for me!`,
     logo: shutingcreativepflio,
     isComingSoon: false,
