@@ -26,7 +26,7 @@ import istorybookoverall from './istorybook/istorybookoverall.jpg';
 import nurse from './nurse/nurse.png';
 import lifeofkid from './lifeofkid/lifeofkid.png';
 import shutingcreativepflio from './shutingcreativepflio/creative.png';
-import shutingcreativepfliooverall from './shutingcreativepflio/creativeoverall.png';
+import shutingcreativepfliooverall from './shutingcreativepflio/creativeoverall.jpeg';
 
 export const flavourTextList = {
   aboutMe: [
