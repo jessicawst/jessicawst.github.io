@@ -10,8 +10,8 @@ import { flavourTextList } from '../data/dataLists';
 class About extends React.Component {
   downloadResume = () => {
     const link = document.createElement('a');
-    link.download = `Shuting_Resume.pdf`;
-    link.href = 'pdfs/Shuting_Resume.pdf';
+    link.download = `Jessicawst_Resume.pdf`;
+    link.href = 'pdfs/Jessicawst_Resume.pdf';
     link.click();
     link.remove();
   };
