@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withMediaQuery from '../utils/withMediaQuery';
 import { workList } from '../data/dataLists';
 import { WorkSlant, Star, LatestWorkStar, ComingSoonStar } from '../assets';
+import { Suspense } from 'react';
 
 class Work extends React.Component {
   render() {
@@ -31,21 +32,23 @@ class Work extends React.Component {
         <div className={classes.workContainer}>
           <Grid className={classes.workGridContainer} container spacing={2} alignItems="center">
             {workList.map((item, index) => (
-              <Grid key={index} item lg={4} md={6} sm={6} xs={12}>
-                <Button
-                  className={classes.workListItem}
-                  to={`${item.link}`}
-                  component={Link}
-                  disableRipple
-                  disableTouchRipple
-                  disableFocusRipple
-                  disableElevation
-                >
-                  <img className={classes.workListItemLogo} src={item.logo} alt="" />
-                  {item.isLatest ? <LatestWorkStar className={classes.workListItemStar} /> : ''}
-                  {item.isComingSoon ? <ComingSoonStar className={classes.workListItemStar} /> : ''}
-                </Button>
-              </Grid>
+              <Suspense key={index} fallback="Loading...">
+                <Grid item lg={4} md={6} sm={6} xs={12}>
+                  <Button
+                    className={classes.workListItem}
+                    to={`${item.link}`}
+                    component={Link}
+                    disableRipple
+                    disableTouchRipple
+                    disableFocusRipple
+                    disableElevation
+                  >
+                    <img className={classes.workListItemLogo} src={item.logo} alt="" />
+                    {item.isLatest ? <LatestWorkStar className={classes.workListItemStar} /> : ''}
+                    {item.isComingSoon ? <ComingSoonStar className={classes.workListItemStar} /> : ''}
+                  </Button>
+                </Grid>
+              </Suspense>
             ))}
           </Grid>
         </div>
@@ -140,13 +143,18 @@ const styles = (theme) => ({
       width: 'calc(60vw - 16px)',
       height: 'calc(60vw - 16px)',
     },
+    animation: 'fadeIn ease 2s',
+    animationIterationCount: 1,
+    animationFillMode: 'forwards',
+    transition: 'transform .2s',
     '&:hover': {
       backgroundColor: 'transparent',
+      transform: 'scale(1.05)'
     },
   },
   workListItemLogo: {
     width: '100%',
-    borderRadius: 8,
+    borderRadius: 8
   },
   workListItemStar: {
     position: 'absolute',
