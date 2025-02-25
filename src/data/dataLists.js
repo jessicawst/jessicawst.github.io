@@ -28,7 +28,7 @@ import lifeofkid from './lifeofkid/lifeofkid.png';
 import shutingcreativepflio from './shutingcreativepflio/creative.png';
 import shutingcreativepfliooverall from './shutingcreativepflio/creativeoverall.jpeg';
 import olay from './olay/olay.jpeg';
-import olayslides from './olay/olayslides.jpeg'
+import olayslides from './olay/olayslides.jpg'
 
 export const flavourTextList = {
   aboutMe: [
