@@ -1,7 +1,7 @@
-import React, { lazy, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import About from './About';
 import Contact from './Contact';
-const Work = lazy(() => import('./Work'));
+import Work from './Work';
 
 const Home = ({ setTopBarValue }) => {
   const [isHome, setIsHome] = useState(true);

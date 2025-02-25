@@ -27,6 +27,8 @@ import nurse from './nurse/nurse.png';
 import lifeofkid from './lifeofkid/lifeofkid.png';
 import shutingcreativepflio from './shutingcreativepflio/creative.png';
 import shutingcreativepfliooverall from './shutingcreativepflio/creativeoverall.jpeg';
+import olay from './olay/olay.jpeg';
+import olayslides from './olay/olayslides.jpeg'
 
 export const flavourTextList = {
   aboutMe: [
@@ -48,6 +50,18 @@ export const flavourTextList = {
 
 export const workList = [
   {
+    name: "Olays Artwork",
+    title: 'Olay',
+    tags: ['Econtents', 'Banners'],
+    description: `Infused Creativity, Innovation with brand's aesthetics for Olay's New launches that tailors to 8 different markets needs such as Key Visuals, Econtent (e.g Product Claims), Various Banners for Websites and Shopping Platforms ensuring a resonant connection with the target audience.`,
+    logo: olay,
+    isComingSoon: false,
+    images: [olayslides],
+    isLatest: true,
+    url: 'https://docs.google.com/presentation/d/1WW9l7ELcCHA_D0mRw5L33OYQUqkXXFlP/edit?usp=sharing&ouid=101023579655140136825&rtpof=true&sd=true',
+    link: 'olay'
+  },
+  {
     name: 'My Creative Portfolio',
     title: 'My Creative Portfolio',
     tags: ['Banners', 'Rich Media'],
@@ -55,7 +69,7 @@ export const workList = [
     logo: shutingcreativepflio,
     isComingSoon: false,
     images: [shutingcreativepfliooverall],
-    isLatest: true,
+    isLatest: false,
     url: 'https://docs.google.com/presentation/d/1e9GhafLfPUmwVUYsoFD-pRYlT0E8hu1XeOyY-uA62PQ/edit?usp=sharing',
     link: 'creativeportfolio'
   },
